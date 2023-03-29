@@ -8,9 +8,9 @@
 
 # Wiki
 
-1) [Team Contract][https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Team-Contract]
-2) [Initial List of Requirements][https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Initial-List-of-Requirements]
-3) [Project Summary Paragraph][https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Project-Summary-Paragraph]
+1) [Team Contract](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Team-Contract)
+2) [Initial List of Requirements](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Initial-List-of-Requirements)
+3) [Project Summary Paragraph](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Project-Summary-Paragraph)
 
 
 
