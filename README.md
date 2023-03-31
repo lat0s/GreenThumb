@@ -10,6 +10,9 @@
 ### [Team Contract](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Team-Contract)
 ### [Initial List of Requirements](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Initial-List-of-Requirements)
 ### [Project Summary Paragraph](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Project-Summary-Paragraph)
+### [Project Purpose](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Project-Purpose)
+### [Project Usage](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Project-Usage)
+### [Initial System Design](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Initial-System-Design)
 
 
 
