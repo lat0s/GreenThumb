@@ -14,6 +14,7 @@
 ### [Project Usage](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Project-Usage)
 ### [Initial System Design](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/Initial-System-Design)
 
+<img src="https://i.imgur.com/5ArlAM2.png" width="128" height="128">
 
 
 
