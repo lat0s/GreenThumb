@@ -5,13 +5,15 @@
 
     <TextView
         android:id="@+id/currentPlantText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/mulishBold"
+        android:layout_width="200dp"
+        android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:text="Current Plant" />
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="15dp"
+        android:text="Current Plant"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/homeToPlantProfilesButton"
@@ -19,8 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginBottom="71dp"
+        android:fontFamily="@font/mulishbold"
         android:text="Plant Profiles" />
 
     <Button
@@ -29,8 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="72dp"
+        android:fontFamily="@font/mulishbold"
         android:text="Settings" />
 
     <Button
@@ -42,6 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="101dp"
         android:layout_marginTop="182dp"
+        android:fontFamily="@font/mulishbold"
         android:text="Care Notifications" />
 
 </RelativeLayout>
