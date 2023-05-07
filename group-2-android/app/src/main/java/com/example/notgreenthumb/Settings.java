@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Settings extends AppCompatActivity {
-    Button url;
+    Button button;
     TextView mail;
 
     @Override
@@ -18,10 +18,10 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        url = findViewById(R.id.button);
+        button = findViewById(R.id.button);
         mail = findViewById(R.id.textView4);
 
-        url.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 URL("https://www.youtube.com/watch?v=OwCZq-maNb0");
