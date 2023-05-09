@@ -1,5 +1,0 @@
-#define SSID "Wifi"
-#define PASSWORD "password42"
-#define sub_topic "greenthumb/app"
-#define pub_topic "sensor data"
-#define my_IPv4 "192.168.130.15"
