@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="mulish">
+        <item name="android:fontFamily">@font/mulish</item>
+    </style>
+    <style name="mulishBold">
+        <item name="android:fontFamily">@font/mulishbold</item>
+    </style>
+
+</resources>
