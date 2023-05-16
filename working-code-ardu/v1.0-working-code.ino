@@ -4,9 +4,9 @@
 #include "PubSubClient.h"
 
 // WiFi and MQTT credentials
-const char* ssid = "";
-const char* password = "";
-const char* mqtt_server = "";
+const char* ssid = "wifi";
+const char* password = "password42";
+const char* mqtt_server = "192.168.216.192";
 const int mqtt_port = 1883;
 
 WiFiClient espClient;
@@ -30,6 +30,8 @@ void setup() {
   Serial.begin(9600);
   pinMode(WIO_LIGHT, INPUT);
   pinMode(WIO_BUZZER, OUTPUT);
+
+  
   
   dht.begin();
   tft.begin();
@@ -136,11 +138,17 @@ void loop() {
   uint16_t light = analogRead(WIO_LIGHT);
 
   int sensorValue = analogRead(soilMoistureSensorPin);
-  soilMoistureValue = map(sensorValue, 1023, 0, 0, 100);
+  soilMoistureValue = sensorValue;
+
+  if (soilMoistureValue < 0) {
+  soilMoistureValue = 0;
+} else if (soilMoistureValue > 100) {
+  soilMoistureValue = 100;
+}
 
   if (oldTemperature != temperature || oldHumidity != humidity || oldLight != light || oldSoilMoistureValue != soilMoistureValue) {
     if (WiFi.status() == WL_CONNECTED) {
-      String payload = String(temperature) + "," + String(humidity) + "," + String(light) + "," + String(soilMoistureValue);
+      String payload = String(temperature) + "," + String(humidity) + "," + String(light) + "," + String(sensorValue);
       client.publish("sensor/data", payload.c_str());
     }
 
@@ -158,4 +166,3 @@ void loop() {
 
   delay(500);
 }
-
