@@ -77,6 +77,45 @@ void reconnect() {
   }
 }
 
+// REFACTORED OLD DISPLAY FUNCTION TO USE LESS RAM - Georgios
+
+void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
+  // Display header
+  tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
+  tft.setTextColor(TFT_WHITE);
+  tft.setTextSize(3);  
+  tft.drawString("Green Thumb", 50, 15);
+  tft.drawFastVLine(150, 50, 190, TFT_DARKGREEN);
+  tft.drawFastHLine(0, 140, 320, TFT_DARKGREEN);
+  // Display Temperature
+  tft.fillRect(15, 85, 130, 30, TFT_WHITE);
+  tft.setTextColor(TFT_BLACK);
+  tft.setTextSize(3);
+  tft.drawNumber((int)temperature, 20, 90);
+  tft.setTextSize(2);
+  tft.drawString("°C", 100, 95); 
+  // Display Humidity
+  tft.fillRect(15, 190, 130, 30, TFT_WHITE);
+  tft.setTextColor(TFT_BLACK);
+  tft.setTextSize(3);
+  tft.drawNumber((int)humidity, 20, 195);
+  tft.setTextSize(2);
+  tft.drawString("%RH", 100, 200);
+  // Display Moisture
+  tft.fillRect(165, 85, 130, 30, TFT_WHITE);
+  tft.setTextColor(TFT_BLACK);
+  tft.setTextSize(3);
+  tft.drawNumber(soilMoistureValue, 170, 90);
+  tft.setTextSize(2);
+  tft.drawString("%", 240, 95);
+  // Display Light
+  tft.fillRect(165, 190, 130, 30, TFT_WHITE);
+  tft.setTextColor(TFT_BLACK);
+  tft.setTextSize(3);
+  tft.drawNumber(light, 170, 195);
+  tft.setTextSize(2);
+  tft.drawString("Lux", 240, 200);
+}
 
 
 
@@ -96,6 +135,7 @@ void loop() {
   int temperature = (int) dht.readTemperature();
   int humidity = (int) dht.readHumidity();
   int light = analogRead(WIO_LIGHT);
+  int sensorValue = map(analogRead(soilMoistureSensorPin), 0, 1023, 0, 100);
   
   if (oldTemperature != temperature || oldHumidity != humidity || oldLight != light || oldSoilMoistureValue != sensorValue) {
     if (WiFi.status() == WL_CONNECTED) {
@@ -103,6 +143,8 @@ void loop() {
       String payload = String(temperature) + "," + String(humidity) + "," + String(light) + "," + String(sensorValue);
       client.publish("sensor/data", payload.c_str());
     }
+	
+	displayData(temperature,humidity,sensorValue,light);
 
   
     oldTemperature = temperature;
