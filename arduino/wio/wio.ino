@@ -31,11 +31,12 @@ void setup() {
   pinMode(WIO_LIGHT, INPUT);
   pinMode(WIO_BUZZER, OUTPUT);
   
+  
   dht.begin();
   tft.begin();
   tft.setRotation(3);
   displayHeader(tft);
-  WiFi.begin(ssid, password);
+  setup_wifi();
   client.setServer(mqtt_server, mqtt_port);
   tft.setTextColor(TFT_BLACK);
   tft.setTextSize(2);
@@ -78,7 +79,6 @@ void reconnect() {
   }
 }
 
-// REFACTORED OLD DISPLAY FUNCTION TO USE LESS RAM - Georgios
 void displayHeader(TFT_eSPI &tft) {
   tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
   tft.setTextColor(TFT_WHITE);
@@ -88,7 +88,7 @@ void displayHeader(TFT_eSPI &tft) {
   tft.drawFastHLine(0, 140, 320, TFT_DARKGREEN);
 }
 
-void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
+void displayTemp(int temperature) {
   // Display Temperature
   tft.fillRect(15, 85, 130, 30, TFT_WHITE);
   tft.setTextColor(TFT_BLACK);
@@ -96,6 +96,9 @@ void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
   tft.drawNumber((int)temperature, 20, 90);
   tft.setTextSize(2);
   tft.drawString("°C", 100, 95); 
+}
+
+ void displayHumidity(int humidity) {
   // Display Humidity
   tft.fillRect(15, 190, 130, 30, TFT_WHITE);
   tft.setTextColor(TFT_BLACK);
@@ -103,6 +106,9 @@ void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
   tft.drawNumber((int)humidity, 20, 195);
   tft.setTextSize(2);
   tft.drawString("%RH", 100, 200);
+ }
+ 
+ void displayMoisture(int soilMoistureValue) {
   // Display Moisture
   tft.fillRect(165, 85, 130, 30, TFT_WHITE);
   tft.setTextColor(TFT_BLACK);
@@ -110,6 +116,9 @@ void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
   tft.drawNumber(soilMoistureValue, 170, 90);
   tft.setTextSize(2);
   tft.drawString("%", 240, 95);
+ }
+
+void displayLight(int light) {
   // Display Light
   tft.fillRect(165, 190, 130, 30, TFT_WHITE);
   tft.setTextColor(TFT_BLACK);
@@ -117,9 +126,8 @@ void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
   tft.drawNumber(light, 170, 195);
   tft.setTextSize(2);
   tft.drawString("Lux", 240, 200);
+	
 }
-
-
 
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
@@ -146,7 +154,10 @@ void loop() {
       client.publish("sensor/data", payload.c_str());
     }
 	
-	displayData(temperature,humidity,sensorValue,light);
+	displayTemp(temperature);
+	displayHumidity(humidity);
+	displayMoisture(sensorValue);
+	displayLight(light);
 
   
     oldTemperature = temperature;
