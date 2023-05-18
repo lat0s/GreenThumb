@@ -34,6 +34,7 @@ void setup() {
   dht.begin();
   tft.begin();
   tft.setRotation(3);
+  displayHeader(tft);
   WiFi.begin(ssid, password);
   client.setServer(mqtt_server, mqtt_port);
   tft.setTextColor(TFT_BLACK);
@@ -78,15 +79,16 @@ void reconnect() {
 }
 
 // REFACTORED OLD DISPLAY FUNCTION TO USE LESS RAM - Georgios
-
-void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
-  // Display header
+void displayHeader(TFT_eSPI &tft) {
   tft.fillRect(0, 0, 320, 50, TFT_DARKGREEN);
   tft.setTextColor(TFT_WHITE);
   tft.setTextSize(3);  
   tft.drawString("Green Thumb", 50, 15);
   tft.drawFastVLine(150, 50, 190, TFT_DARKGREEN);
   tft.drawFastHLine(0, 140, 320, TFT_DARKGREEN);
+}
+
+void displayData(int temperature,int humidity,int soilMoistureValue,int light) {
   // Display Temperature
   tft.fillRect(15, 85, 130, 30, TFT_WHITE);
   tft.setTextColor(TFT_BLACK);
