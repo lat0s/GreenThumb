@@ -1,0 +1,45 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewPlant"
+        android:layout_width="195dp"
+        android:layout_height="297dp"
+        android:layout_marginTop="136dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/green"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="100dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/plantImageView"
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:src="@drawable/plant1" />
+
+        <TextView
+            android:id="@+id/plantNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="270dp"
+            android:fontFamily="@font/calibri"
+            android:text="Your Plant"
+            android:textAlignment="center"
+            android:textColor="@color/contentTextColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
