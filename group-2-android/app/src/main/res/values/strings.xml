@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">notGreenThumb</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
