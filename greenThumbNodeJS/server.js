@@ -9,6 +9,21 @@ clean:true};
 
 const mqttClient = mqtt.connect('mqtt:192.168.216.161',options)
 
+const app = express()
+const port = 3000  //server runs on port 3000
+const ip = '0.0.0.0'
+
+app.use(express.static('C:/Users/samth/greenThumbNodeJS/data'))
+
+app.listen(port, ip, function(err) {
+  if(err) {
+    return console.log('Error starting server:', err);
+  }
+  
+  console.log(`Server running at ${ip}:${port}`);
+});
+
+
 mqttClient.on('connect',function () {
   console.log("connected")
   
