@@ -77,10 +77,8 @@ public class CreatePlantImageAdapter extends RecyclerView.Adapter<CreatePlantIma
         public void bind(int imageResId, boolean isSelected) {
             imageView.setImageResource(imageResId);
             if (isSelected) {
-                // Apply your desired highlighting effect here
                 imageView.setBackgroundResource(R.drawable.selected_item_background);
             } else {
-                // Remove highlighting effect here (if needed)
                 imageView.setBackgroundResource(0);
             }
         }

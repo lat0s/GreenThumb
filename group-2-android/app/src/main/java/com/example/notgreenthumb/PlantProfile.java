@@ -2,6 +2,8 @@ package com.example.notgreenthumb;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.*;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.notgreenthumb.mqtt.MqttDataUpdateListener;
 import com.example.notgreenthumb.mqtt.MqttHelper;
+import com.example.notgreenthumb.plants.Plant;
 
 public class PlantProfile extends AppCompatActivity {
     private TextView yourPlant;
@@ -26,9 +29,12 @@ public class PlantProfile extends AppCompatActivity {
     private static final int REQUEST_CODE_DASHBOARD = 1;
 
     private MqttHelper mqttHelper;
+    private Plant plant;
 
 
-    @SuppressLint("WrongViewCast")
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,8 @@ public class PlantProfile extends AppCompatActivity {
         back = findViewById(R.id.backButton);
         back.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
 
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,20 +60,43 @@ public class PlantProfile extends AppCompatActivity {
         mqttHelper = new MqttHelper(this, new MqttDataUpdateListener() {
             @Override
             public void onMqttDataUpdate(String parameter, String value) {
-                updatePlantData(parameter, value);
+                updatePlantData(parameter, value,plant);
+
             }
         });
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Wait if the mqttClient is not connected
+                    while (!mqttHelper.mqttClient.isConnected()) {
+                        Thread.sleep(500);
+                    }
+
+                    // If connected, publish the message
+                    mqttHelper.publishMessage("welcome/topic", "hello");
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
         // Get the Intent that started this activity and extract the plant details
         Intent intent = getIntent();
-        String plantName = intent.getStringExtra("plantName");
-        int imageIndex = intent.getIntExtra("plantImageIndex", 1);
+        plant = (Plant) intent.getSerializableExtra("plant");
 
-        // Now set these values to your TextView and ImageView
-        yourPlant.setText(plantName);
-        String imageName = "plant" + imageIndex;
-        int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-        plantPicture.setImageResource(resID);
+        if (plant != null) {
+            String plantName = plant.getPlantName();
+            int imageIndex = plant.getImageIndex();
+
+            yourPlant.setText(plantName);
+            String imageName = "plant" + imageIndex;
+            int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            plantPicture.setImageResource(resID);
+        }
+
 
         setupBackgroundAnimation();
     }
@@ -81,23 +112,27 @@ public class PlantProfile extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
     }
-    private void updatePlantData(String parameter, String value) {
+    private void updatePlantData(String parameter, String value, Plant plant) {
         switch (parameter) {
             case "temperature":
                 TextView temperatureValue = findViewById(R.id.temperature_value);
-                temperatureValue.setText(value + " °C");
+                plant.setTemperatureValue(Double.parseDouble(value));
+                temperatureValue.setText(plant.getTemperatureValue() + " °C");
                 break;
             case "humidity":
                 TextView humidityValue = findViewById(R.id.humidity_value);
-                humidityValue.setText(value + " %RH");
+                plant.setHumidityValue(Double.parseDouble(value));
+                humidityValue.setText(plant.getHumidityValue() + " %RH");
                 break;
             case "light":
                 TextView lightValue = findViewById(R.id.light_value);
-                lightValue.setText(value + " Lux");
+                plant.setLightValue(Double.parseDouble(value));
+                lightValue.setText(plant.getLightValue() + " Lux");
                 break;
             case "soil_moisture":
                 TextView moistureValue = findViewById(R.id.moisture_value);
-                moistureValue.setText(value + " %");
+                plant.setMoistureValue(Double.parseDouble(value));
+                moistureValue.setText(plant.getMoistureValue() + " %");
                 break;
         }
     }

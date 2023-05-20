@@ -97,6 +97,15 @@ public class Plant implements Serializable {
         return maxLight;
     }
 
+
+    public String getMinMax(){
+        String minMax = minTemp+","+maxTemp+","+minHumidity+","+maxHumidity+","+minMoisture+","+maxMoisture+","+minLight+","+maxLight;
+        return minMax;
+    }
+    public String getCurrentValues(){
+        String values = temperatureValue+","+humidityValue+","+moistureValue+","+lightValue;
+        return values;
+    }
     public int getImageIndex() {
         return imageIndex;
     }
@@ -117,4 +126,39 @@ public class Plant implements Serializable {
     public String toString() {
         return plantName;
     }
+
+
+    public double getLightValue() {
+        return lightValue;
+    }
+
+    public void setLightValue(double lightValue) {
+        this.lightValue = lightValue;
+    }
+
+    public double getHumidityValue() {
+        return humidityValue;
+    }
+
+    public void setHumidityValue(double humidityValue) {
+        this.humidityValue = humidityValue;
+    }
+
+    public double getTemperatureValue() {
+        return temperatureValue;
+    }
+
+    public void setTemperatureValue(double temperatureValue) {
+        this.temperatureValue = temperatureValue;
+    }
+
+    public double getMoistureValue() {
+        return moistureValue;
+    }
+
+    public void setMoistureValue(double moistureValue) {
+        this.moistureValue = moistureValue;
+    }
 }
+
+

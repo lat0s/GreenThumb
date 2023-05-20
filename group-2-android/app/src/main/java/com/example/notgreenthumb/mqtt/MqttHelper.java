@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class MqttHelper {
     private static final String TAG = "MqttHelper";
-    private MqttAndroidClient mqttClient;
+    public MqttAndroidClient mqttClient;
     private String[] topics;
     private MqttDataUpdateListener dataUpdateListener;
 
@@ -110,6 +110,22 @@ public class MqttHelper {
             }
         }
     }
+
+    public void publishMessage(String topic, String messageContent) {
+        try {
+            if (mqttClient != null && mqttClient.isConnected()) {
+                MqttMessage message = new MqttMessage();
+                message.setPayload(messageContent.getBytes());
+                mqttClient.publish(topic, message);
+                Log.d(TAG, "Message published to topic: " + topic);
+            } else {
+                Log.e(TAG, "Error publishing message, client is not connected");
+            }
+        } catch (MqttException e) {
+            Log.e(TAG, "Error publishing message: " + e.getMessage(), e);
+        }
+    }
+
 
     private void onMqttDataReceived(String topic, String data) {
         // parse the data received
