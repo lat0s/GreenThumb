@@ -1,0 +1,3 @@
+@echo off
+start cmd /k "ipconfig && mosquitto -v -c "C:\Program Files\mosquitto\mosquitto.conf""
+node server.js
