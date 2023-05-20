@@ -1,0 +1,16 @@
+{
+  "name": "greenthumbnodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm install express"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mqtt": "^4.3.7"
+  }
+}
