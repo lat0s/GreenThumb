@@ -11,16 +11,12 @@
 Green Thumb is a simple plant monitoring system designed to help plant enthusiasts of all levels better understand and care for their plants. By using a Wio Seeed Terminal with MQTT and Grove Sensors, Green Thumb allows users to monitor their plants' temperature, soil moisture, and light conditions, providing care recommendations and notifications to help them provide the optimal conditions for their plants.
 
 ## Features
-* **Plant Database**: Discover a vast collection of plants with detailed information and accompanying images.
-* **Reminder Notifications**: Never forget to water or care for your plants again. Set reminders on a regular schedule to keep your plants healthy.
-* **Care Recommendations**: Get personalized care recommendations for your plants based on their type and individual needs.
-* **Weather Monitoring**: Keep an eye on local weather conditions and adjust your care routine accordingly.
-* **Plant Monitoring**: Track your plants' growth and health with ease. Use the monitoring feature to ensure they're thriving.
+* **Plant Database**: Discover a vast collection of plants with detailed information in reagrds to suggested care conditions they should be kept in and some plant specific recommendations for plant care.
+* **Care Recommendations**: Get personalized care recommendations for your plants based on the specified environment you want them in compared to the real time enviroment they are in.
+* **Plant Monitoring**: Track your plants' growth and health by tracking their growing conditions in real time.
 * **Dark Mode**: Enjoy a more comfortable viewing experience with the added option to switch to dark mode.
-* **Settings**: Customize the app's settings to suit your preferences and needs.
-* **Easy Navigation**: Navigate through the app's features with ease using the convenient menu or sidebar.
+* **Settings**: Take the control over your MQTT connection from inside the settings, get the access to our carefully created plant database, access our application tutorial, change the app theme and a quick link to email us about your queries and feeback of the app.
 * **Tutorial**: Learn how to use the app and care for your plants with a step-by-step tutorial.
-* **Animation**: Enjoy stunning visual effects when adding new plants to your collection.
 * **Contact Support**: Have a question or issue? Contact our support team for fast and friendly assistance.
 * **Feedback**: Share your thoughts and suggestions to help us improve the app and provide the best experience possible.
 
@@ -62,18 +58,23 @@ Overall, the project's hardware architecture allows for effective data collectin
 
 ## The main contributions of each Member:
 
-George – Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
+**Georgios Panormitis Latos** 
+* George Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
 
-Sam - Took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions.
+**Sam Hardingham**
+* Sam took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions.
 
-Nish - Took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app documentation, while simultaneously addressing conflicts and bringing problems onto notice.
+**Nishchya Arya**
+* Nishchya took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app documentation, while simultaneously addressing conflicts and bringing problems onto notice.
 
-Mesi –Was responsible for the notification feature (as a whole) through the existing MQTT connection, comparing the received sensor data to the users desired care conditions. She created the UI for notifications and contributed significantly towards the applications documentation. She also actively participated with in-person discussions, proving as a notably valuable asset by making key points to arguments and steering the project. Her main hardware contribution was refactoring Mohammad’s original Arduino code for the sensors and the terminal.
+**Mesimaaria Alastalo** 
+* Mesimaaria was responsible for the notification feature (as a whole) through the existing MQTT connection, comparing the received sensor data to the users desired care conditions. She created the UI for notifications and contributed significantly towards the applications documentation. She also actively participated with in-person discussions, proving as a notably valuable asset by making key points to arguments and steering the project. Her main hardware contribution was refactoring Mohammad’s original Arduino code for the sensors and the terminal.
 
-Simone - Took care of the MQTT connection towards the app, and played a significant role in coding and refactoring the hardware code. He had a very important role in the brainstorming process of the application as a whole and participated actively in team meetings.
+**Simone Graziosi**
+* Simone took care of the MQTT connection towards the app, and played a significant role in coding and refactoring the hardware code. He had a very important role in the brainstorming process of the application as a whole and participated actively in team meetings.
 
-Mohammad - Made nessecary changes to the wiki page.
-Edited the Home page , made  open Resources , app features and design pages. He also made and Organized labels, researched mqtt, Received and connected sensors and hardware. Educated other team members about hardware connectivity. His main contribution was sensors data history feature in the app.
+**Mohammad Mohammad**
+* Mohammad made nessecary changes to the wiki page.He edited the Home page , made  open Resources , app features and design pages. He also made and Organized labels, researched mqtt, Received and connected sensors and hardware. Educated other team members about hardware connectivity. His main contribution was sensors data history feature in the app.
 
 ## Installation
 
@@ -89,6 +90,24 @@ Edited the Home page , made  open Resources , app features and design pages. He 
 - Simone Graziosi | [graziosi](https://git.chalmers.se/graziosi)
 
 ### Libraries Used
+The following libraries were used in the development of the entire system.
+* implementation 'androidx.recyclerview:recyclerview:1.3.0'
+* implementation 'com.google.code.gson:gson:2.8.9'
+
+* implementation 'io.github.florent37:shapeofview:1.4.7'
+* implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+* implementation 'com.google.android.material:material:1.8.0'
+
+* implementation 'androidx.appcompat:appcompat:1.4.1'
+* implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+* implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+* implementation 'androidx.multidex:multidex:2.0.1'
+* implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+* implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+* testImplementation 'junit:junit:4.13.2'
+* androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+* androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 ### Project status - in development
 
