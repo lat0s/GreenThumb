@@ -65,8 +65,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                     if (position != RecyclerView.NO_POSITION) {
                         Plant clickedPlant = plantList.get(position);
                         Intent intent = new Intent(context, PlantProfile.class);
-                        intent.putExtra("plantName", clickedPlant.getPlantName());
-                        intent.putExtra("plantImageIndex", clickedPlant.getImageIndex());
+                        intent.putExtra("plant", clickedPlant);
                         context.startActivity(intent);
                     }
                 }
