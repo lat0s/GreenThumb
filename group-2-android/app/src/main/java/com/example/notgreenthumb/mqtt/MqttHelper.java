@@ -22,15 +22,12 @@ public class MqttHelper {
     private MqttDataUpdateListener dataUpdateListener;
 
 
-    public MqttHelper(Context context, MqttDataUpdateListener dataUpdateListener) {
+    public MqttHelper(Context context, MqttDataUpdateListener dataUpdateListener, String brokerUrl, String clientId) {
         this.dataUpdateListener = dataUpdateListener;
-        initMqttClient(context);
+        initMqttClient(context, brokerUrl, clientId);
     }
 
-
-    private void initMqttClient(Context context) {
-        String brokerUrl = "tcp://192.168.50.9:1883";
-        String clientId = "GreenThumb";
+    private void initMqttClient(Context context, String brokerUrl, String clientId) {
         topics = new String[] {
                 "sensor/data"
         };
