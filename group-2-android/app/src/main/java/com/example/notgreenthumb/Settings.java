@@ -1,6 +1,7 @@
 package com.example.notgreenthumb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,14 +13,35 @@ import android.widget.TextView;
 public class Settings extends AppCompatActivity {
     Button button;
     TextView mail;
+    Button theme;
+    boolean isNightModeOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        theme = findViewById(R.id.themeChange);
+
+        // Initialize the night mode state
+        isNightModeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+
+        theme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Toggle the night mode state
+                isNightModeOn = !isNightModeOn;
+
+                // Update the night mode immediately
+                if (isNightModeOn) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
+
         button = findViewById(R.id.button);
-        mail = findViewById(R.id.textView4);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +49,7 @@ public class Settings extends AppCompatActivity {
                 URL("https://www.youtube.com/watch?v=OwCZq-maNb0");
             }
         });
+        mail = findViewById(R.id.textView4);
 
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
