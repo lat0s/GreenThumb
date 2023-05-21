@@ -50,6 +50,16 @@ The Benefits are:
 
 •	Access to the data history recorded by each sensor with the click of a button, thus, having a history of conditions the plant has been kept in.
 
+## hardware architecture
+The project’s hardware architecture consists of the following components: 
+ 
+A Seeduino WIO terminal, the system’s main control element, it is a microcontroller with integrated Wi-Fi useful for IoT applications. It controls sensor data processing, Wi-Fi network connectivity, and MQTT server management.  It manages communication with external MQTT servers, enabling the system to send and receive commands from a distance.
+ 
+Grove Sensors: Grove sensors are sensors that can be integrated with the Seeduino Wio terminal.The system makes use of these sensors thanks to which the user is able to monitor temperature, soil moisture and light condition.The DHT11 grove module sensor measures the humidity and temperature of the surrounding air, the WIO recieves this data and displays on the TFT.
+
+Furthermore, the system also includes a soil moisture sensor. Users may easily view real-time sensor readings for temperature, humidity, soil moisture and light on the Wio terminals TFT display, a graphical user interface. The collected sensor data is essentials for applications including plant monitoring or controlled watering system features. 
+Overall, the project's hardware architecture allows for effective data collecting, processing, and visualisation, therefore offering a complete solution.
+
 ## The main contributions of each Member:
 
 George – Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
@@ -62,6 +72,8 @@ Mesi –Was responsible for the notification feature (as a whole) through the ex
 
 Simone - Took care of the MQTT connection towards the app, and played a significant role in coding and refactoring the hardware code. He had a very important role in the brainstorming process of the application as a whole and participated actively in team meetings.
 
+Mohammad - Made nessecary changes to the wiki page.
+Edited the Home page , made  open Resources , app features and design pages. He also made and Organized labels, researched mqtt, Received and connected sensors and hardware. Educated other team members about hardware connectivity. His main contribution was sensors data history feature in the app.
 
 ## Installation
 
