@@ -15,6 +15,7 @@ public class Settings extends AppCompatActivity {
     TextView mail;
     Button theme;
     boolean isNightModeOn;
+    Button database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,13 @@ public class Settings extends AppCompatActivity {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
             }
+        });
+
+        database = findViewById(R.id.PlantDatabaseButton);
+        database.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                URL("https://www.dropbox.com/s/iwppwrmsyxeitt1/GreenThumb%20Plant%20Database%20.pdf?dl=0");}
         });
 
         button = findViewById(R.id.button);
