@@ -29,6 +29,40 @@ Green Thumb is a simple plant monitoring system designed to help plant enthusias
 * Both the terminal and android app require a **stable internet connection**
 * The grove **sensors must be placed appropriately** in the plants environment
 
+## Purpose and Benefits of the app:
+
+The purpose of this app is to help users improve care for their respective plants by providing a monitoring system with real-time data transfer from sensors, and care notifications based on this data. 
+
+The Benefits are:
+
+•	The app provides the user with real time sensor data including the – current Temperature, Humidity, Soil Moisture, Light conditions.
+
+•	Users can create personalised Plant profiles, with names, icons, and customised ranges for normal conditions. 
+.
+•	Customised notifications, allowed by the customised ranges for a plant’s normal conditions. Notifications are only sent when sensor readings go beyond their specified range.
+
+
+•	Access to a plant database. Found through the settings page, which leads users to a pdf file created by the developers with the aim of providing users with recommended care conditions for various plants. Providing support for users needing additional information about their plant to customise its care conditions.
+
+•	Users can connect to different MQTT Servers, thus, connecting to different sensors by the click of a button and changing the configuration servers inside the app settings.
+
+•	A dark theme for low light environments and for those simply preferring a darker screen.
+
+•	Access to the data history recorded by each sensor with the click of a button, thus, having a history of conditions the plant has been kept in.
+
+## The main contributions of each Member:
+
+George – Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
+
+Sam - Took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions.
+
+Nish - Took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app documentation, while simultaneously addressing conflicts and bringing problems onto notice.
+
+Mesi –Was responsible for the notification feature (as a whole) through the existing MQTT connection, comparing the received sensor data to the users desired care conditions. She created the UI for notifications and contributed significantly towards the applications documentation. She also actively participated with in-person discussions, proving as a notably valuable asset by making key points to arguments and steering the project. Her main hardware contribution was refactoring Mohammad’s original Arduino code for the sensors and the terminal.
+
+Simone - Took care of the MQTT connection towards the app, and played a significant role in coding and refactoring the hardware code. He had a very important role in the brainstorming process of the application as a whole and participated actively in team meetings.
+
+
 ## Installation
 
 ## Usage
