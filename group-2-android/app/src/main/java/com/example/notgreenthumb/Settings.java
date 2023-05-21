@@ -62,7 +62,7 @@ public class Settings extends AppCompatActivity {
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                URL("mailto:gusaryni@student.gu.se");
+                URL("mailto:nishchya@hotmail.com");
             }
         });
 
