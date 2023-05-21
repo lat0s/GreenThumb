@@ -9,6 +9,7 @@
             import android.text.Editable;
             import android.text.TextUtils;
             import android.text.TextWatcher;
+            import android.util.Log;
             import android.view.View;
             import android.widget.Button;
             import android.widget.EditText;
@@ -29,6 +30,7 @@
                 // Field declarations
                 private EditText plantNameEditText;
                 private Button createPlantButton;
+                private static final String TAG = "PlantMaker";
                 private static final int REQUEST_CODE_DASHBOARD = 1;
                 private Button back;
                 private int selectedImageIndex;
@@ -72,6 +74,7 @@
                     CreatePlantImageAdapter createPlantImageAdapter = new CreatePlantImageAdapter(this, imageList, new CreatePlantImageAdapter.OnImageClickListener() {
                         @Override
                         public void onImageClick(int position) {
+                            position++;
                             selectedImageIndex = position;
                         }
                     });
@@ -87,6 +90,7 @@
                             Intent intent = new Intent();
                             intent.putExtra("newPlant", newPlant);
                             setResult(RESULT_OK, intent);
+                            Log.d(TAG,"IMage position is " + newPlant.getImageIndex() + selectedImageIndex);
                             finish();
                         }
                     });

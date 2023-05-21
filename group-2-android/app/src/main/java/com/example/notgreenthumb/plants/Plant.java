@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Plant implements Serializable {
     // Identity variables
     private int imageIndex = 1;
-    private String plantName;
+    private String plantName = "DEFAULT";
 
     // Current data variables? wip!
 
-    private double lightValue;
-    private double humidityValue;
-    private double temperatureValue;
-    private double moistureValue;
+    private int lightValue = -1;
+    private int humidityValue = -1;
+    private int temperatureValue = -1;
+    private int moistureValue =-1;
 
     // Min Max variables
 
@@ -127,36 +127,35 @@ public class Plant implements Serializable {
         return plantName;
     }
 
-
-    public double getLightValue() {
+    public int getLightValue() {
         return lightValue;
     }
 
-    public void setLightValue(double lightValue) {
+    public void setLightValue(int lightValue) {
         this.lightValue = lightValue;
     }
 
-    public double getHumidityValue() {
+    public int getHumidityValue() {
         return humidityValue;
     }
 
-    public void setHumidityValue(double humidityValue) {
+    public void setHumidityValue(int humidityValue) {
         this.humidityValue = humidityValue;
     }
 
-    public double getTemperatureValue() {
+    public int getTemperatureValue() {
         return temperatureValue;
     }
 
-    public void setTemperatureValue(double temperatureValue) {
+    public void setTemperatureValue(int temperatureValue) {
         this.temperatureValue = temperatureValue;
     }
 
-    public double getMoistureValue() {
+    public int getMoistureValue() {
         return moistureValue;
     }
 
-    public void setMoistureValue(double moistureValue) {
+    public void setMoistureValue(int moistureValue) {
         this.moistureValue = moistureValue;
     }
 }

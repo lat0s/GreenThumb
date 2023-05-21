@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
@@ -160,19 +161,24 @@ public class Dashboard extends AppCompatActivity {
         if (json != null) {
             Gson gson = new Gson();
             TypeToken<ArrayList<Plant>> token = new TypeToken<ArrayList<Plant>>() {};
-            ArrayList<Plant> loadedPlantList = gson.fromJson(json, token.getType());
+            try {
+                ArrayList<Plant> loadedPlantList = gson.fromJson(json, token.getType());
 
-            if (loadedPlantList != null) {
-                plantList.clear();
-                plantList.addAll(loadedPlantList);
-                plantAdapter.notifyDataSetChanged();
-            } else {
-                Log.e(TAG, "Failed to parse plant list from shared preferences");
+                if (loadedPlantList != null) {
+                    plantList.clear();
+                    plantList.addAll(loadedPlantList);
+                    plantAdapter.notifyDataSetChanged();
+                } else {
+                    Log.e(TAG, "Failed to parse plant list from shared preferences");
+                }
+            } catch (JsonParseException e) {
+                Log.e(TAG, "Failed to parse plant list from shared preferences: invalid JSON", e);
             }
         } else {
             Log.i(TAG, "No saved plant list found in shared preferences");
         }
     }
+
 
     /**
      * Clears the plant list and updates the adapter.
@@ -212,17 +218,20 @@ public class Dashboard extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE_PLANT_MAKER && resultCode == RESULT_OK && data != null) {
-            if (data.hasExtra("newPlant")) {
-                Plant newPlant = (Plant) data.getSerializableExtra("newPlant");
+            Plant newPlant = (Plant) data.getSerializableExtra("newPlant");
 
+            if (newPlant != null) {
                 plantList.add(newPlant);
                 plantAdapter.notifyDataSetChanged();
 
                 savePlantList();
 
-                Log.d(TAG, "New plant added: " + newPlant.toString());
+                Log.d(TAG, "New plant added: " + newPlant.toString() + newPlant.getPlantName());
+            } else {
+                Log.e(TAG, "Received null Plant object from PlantMakerActivity");
             }
         }
+
     }
 
     /**
