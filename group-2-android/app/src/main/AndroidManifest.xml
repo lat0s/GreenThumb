@@ -29,6 +29,9 @@
             android:name=".Settings"
             android:exported="false" />
         <activity
+            android:name=".Mqtt_Settings"
+            android:exported="false" />
+        <activity
             android:name=".Dashboard"
             android:exported="true">
             <intent-filter>
