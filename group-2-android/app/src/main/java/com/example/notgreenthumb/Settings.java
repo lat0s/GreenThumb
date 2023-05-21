@@ -16,7 +16,7 @@ public class Settings extends AppCompatActivity {
     Button theme;
     boolean isNightModeOn;
     Button database;
-
+    Button mqttSettings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +73,14 @@ public class Settings extends AppCompatActivity {
                 goHome();
             }
         });
+
+        mqttSettings = findViewById(R.id.MqttSettingsButton);
+        mqttSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goMqttSettings();
+            }
+        });
     }
 
     private void URL(String s) {
@@ -83,6 +91,10 @@ public class Settings extends AppCompatActivity {
     private void goHome(){
         Intent goHome = new Intent(this, Dashboard.class);
         startActivity(goHome);
+    }
+    private void goMqttSettings() {
+        Intent goMqttSettings = new Intent(this, Mqtt_Settings.class);
+        startActivity(goMqttSettings);
     }
 
 }
