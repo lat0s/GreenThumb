@@ -6,6 +6,7 @@ import com.example.*;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -57,13 +58,16 @@ public class PlantProfile extends AppCompatActivity {
             }
         });
 
+        SharedPreferences prefs = getSharedPreferences("MqttPrefs", MODE_PRIVATE);
+        String brokerUrl = prefs.getString("brokerUrl", "tcp://192.168.50.9:1883");
+        String clientId = prefs.getString("clientId", "GreenThumb");
+
         mqttHelper = new MqttHelper(this, new MqttDataUpdateListener() {
             @Override
             public void onMqttDataUpdate(String parameter, String value) {
                 updatePlantData(parameter, value,plant);
-
             }
-        });
+        }, brokerUrl, clientId);
 
         new Thread(new Runnable() {
             @Override
