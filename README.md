@@ -50,7 +50,7 @@ The Benefits are:
 
 •	Access to the data history recorded by each sensor with the click of a button, thus, having a history of conditions the plant has been kept in.
 
-## hardware architecture
+## Hardware architecture
 The project’s hardware architecture consists of the following components: 
  
 A Seeduino WIO terminal, the system’s main control element, it is a microcontroller with integrated Wi-Fi useful for IoT applications. It controls sensor data processing, Wi-Fi network connectivity, and MQTT server management.  It manages communication with external MQTT servers, enabling the system to send and receive commands from a distance.
