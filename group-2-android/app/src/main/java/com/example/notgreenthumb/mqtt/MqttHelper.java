@@ -21,6 +21,19 @@ public class MqttHelper {
     private String[] topics;
     private MqttDataUpdateListener dataUpdateListener;
 
+    public interface MqttHelperListener {
+        void onConnected();
+        void onError(String message);
+    }
+
+    private MqttHelperListener listener;
+
+    public MqttHelper(Context context, MqttDataUpdateListener dataUpdateListener, String brokerUrl, String clientId, MqttHelperListener listener) {
+        this.dataUpdateListener = dataUpdateListener;
+        this.listener = listener;
+        initMqttClient(context, brokerUrl, clientId);
+    }
+
 
     public MqttHelper(Context context, MqttDataUpdateListener dataUpdateListener, String brokerUrl, String clientId) {
         this.dataUpdateListener = dataUpdateListener;
@@ -78,11 +91,15 @@ public class MqttHelper {
             public void onSuccess(IMqttToken asyncActionToken) {
                 Log.d(TAG, "Connected to MQTT broker");
                 subscribeToTopics();
+                if (listener != null)
+                    listener.onConnected();
             }
 
             @Override
             public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                Log.d(TAG, "Not connected to MQTT broker");
+                Log.d(TAG, "Failed to connect to MQTT broker");
+                if (listener != null)
+                    listener.onError("Failed to connect to MQTT broker: " + exception.getMessage());
             }
         };
     }

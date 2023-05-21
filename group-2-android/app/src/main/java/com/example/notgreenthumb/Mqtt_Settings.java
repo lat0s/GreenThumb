@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.notgreenthumb.mqtt.MqttDataUpdateListener;
 import com.example.notgreenthumb.mqtt.MqttHelper;
-
 
 public class Mqtt_Settings extends AppCompatActivity {
 
@@ -23,7 +23,6 @@ public class Mqtt_Settings extends AppCompatActivity {
     private Button back, connect;
     private EditText host, port;
     private static final int REQUEST_CODE_SETTINGS = 1;
-
 
     private MqttDataUpdateListener dataUpdateListener;
 
@@ -51,21 +50,27 @@ public class Mqtt_Settings extends AppCompatActivity {
             String brokerUrl = host.getText().toString();
             String clientId = port.getText().toString();
 
-
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString(PREF_BROKER_URL, brokerUrl);
             editor.putString(PREF_CLIENT_ID, clientId);
             editor.apply();
 
+            MqttHelper mqttHelper = new MqttHelper(Mqtt_Settings.this, dataUpdateListener, brokerUrl, clientId, new MqttHelper.MqttHelperListener() {
+                @Override
+                public void onConnected() {
+                    Toast.makeText(Mqtt_Settings.this, "Connected successfully", Toast.LENGTH_SHORT).show();
+                }
 
-            MqttHelper mqttHelper = new MqttHelper(Mqtt_Settings.this, dataUpdateListener, brokerUrl, clientId);
+                @Override
+                public void onError(String message) {
+                    Toast.makeText(Mqtt_Settings.this, "Error: " + message, Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
-
 
     private void backToSettings() {
         Intent backToSettings = new Intent(this, Settings.class);
         startActivity(backToSettings);
     }
-
 }

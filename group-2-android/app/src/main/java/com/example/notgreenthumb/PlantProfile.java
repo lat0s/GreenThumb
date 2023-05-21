@@ -5,12 +5,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.example.*;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +28,7 @@ public class PlantProfile extends AppCompatActivity {
 
     private ConstraintLayout layoutProfile;
     private Button back;
+    private Context context;
 
     private static final int REQUEST_CODE_DASHBOARD = 1;
 
@@ -62,10 +65,10 @@ public class PlantProfile extends AppCompatActivity {
         String brokerUrl = prefs.getString("brokerUrl", "tcp://192.168.50.9:1883");
         String clientId = prefs.getString("clientId", "GreenThumb");
 
-        mqttHelper = new MqttHelper(this, new MqttDataUpdateListener() {
-            @Override
-            public void onMqttDataUpdate(String parameter, String value) {
-                updatePlantData(parameter, value,plant);
+            mqttHelper = new MqttHelper(this, new MqttDataUpdateListener() {
+                @Override
+                public void onMqttDataUpdate(String parameter, String value) {
+                    updatePlantData(parameter, value,plant);
             }
         }, brokerUrl, clientId);
 
@@ -120,26 +123,26 @@ public class PlantProfile extends AppCompatActivity {
         switch (parameter) {
             case "temperature":
                 TextView temperatureValue = findViewById(R.id.temperature_value);
-                plant.setTemperatureValue(Double.parseDouble(value));
-                temperatureValue.setText(plant.getTemperatureValue() + " °C");
-                break;
-            case "humidity":
-                TextView humidityValue = findViewById(R.id.humidity_value);
-                plant.setHumidityValue(Double.parseDouble(value));
-                humidityValue.setText(plant.getHumidityValue() + " %RH");
-                break;
-            case "light":
-                TextView lightValue = findViewById(R.id.light_value);
-                plant.setLightValue(Double.parseDouble(value));
-                lightValue.setText(plant.getLightValue() + " Lux");
-                break;
-            case "soil_moisture":
-                TextView moistureValue = findViewById(R.id.moisture_value);
-                plant.setMoistureValue(Double.parseDouble(value));
-                moistureValue.setText(plant.getMoistureValue() + " %");
-                break;
+                    plant.setTemperatureValue(Integer.parseInt(value));
+                    temperatureValue.setText(plant.getTemperatureValue() + " °C");
+                    break;
+                case "humidity":
+                    TextView humidityValue = findViewById(R.id.humidity_value);
+                    plant.setHumidityValue(Integer.parseInt(value));
+                    humidityValue.setText(plant.getHumidityValue() + " %RH");
+                    break;
+                case "light":
+                    TextView lightValue = findViewById(R.id.light_value);
+                    plant.setLightValue(Integer.parseInt(value));
+                    lightValue.setText(plant.getLightValue() + " Lux");
+                    break;
+                case "soil_moisture":
+                    TextView moistureValue = findViewById(R.id.moisture_value);
+                    plant.setMoistureValue(Integer.parseInt(value));
+                    moistureValue.setText(plant.getMoistureValue() + " %");
+                    break;
+            }
         }
-    }
 
 
     @Override
