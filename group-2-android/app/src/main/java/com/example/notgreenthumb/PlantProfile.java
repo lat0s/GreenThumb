@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.notgreenthumb.Notifications;
 import com.example.notgreenthumb.mqtt.MqttDataUpdateListener;
 import com.example.notgreenthumb.mqtt.MqttHelper;
 import com.example.notgreenthumb.plants.Plant;
@@ -35,8 +34,6 @@ public class PlantProfile extends AppCompatActivity {
 
     private MqttHelper mqttHelper;
     private Plant plant;
-
-    private Notifications notifications;
 
 
 
@@ -55,7 +52,7 @@ public class PlantProfile extends AppCompatActivity {
         back = findViewById(R.id.backButton);
         back.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
 
-        notifications = new Notifications();
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +69,6 @@ public class PlantProfile extends AppCompatActivity {
                 @Override
                 public void onMqttDataUpdate(String parameter, String value) {
                     updatePlantData(parameter, value,plant);
-                    notifications.checkPlantConditions(PlantProfile.this, plant); // Call checkPlantConditions with data update
             }
         }, brokerUrl, clientId);
 
