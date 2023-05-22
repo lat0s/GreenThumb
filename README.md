@@ -2,10 +2,13 @@
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Prerequisites](#prerequisits)
-4. [Installation Guide](#installation)
-5. [Usage](#usage)
-6. [Team Information](#acknowledgements)
-7. [Wiki](#wiki)
+4. [Purpose and Benefits of the App](#Purpose and Benefits of the app)
+5. [Hardware and Software Architecture](#Hardware and Software Architecture)
+6. [Team Contributions](#The main contributions of each Member)
+7. [Installation Guide](#installation)
+8. [Team Information](#Team Information)
+9. [Libraries User](#Libraries Used)
+10. [Wiki](#wiki)
 
 ## Introduction
 Green Thumb is a simple plant monitoring system designed to help plant enthusiasts of all levels better understand and care for their plants. By using a Wio Seeed Terminal with MQTT and Grove Sensors, Green Thumb allows users to monitor their plants' temperature, soil moisture, and light conditions, providing care recommendations and notifications to help them provide the optimal conditions for their plants.
@@ -25,7 +28,7 @@ Green Thumb is a simple plant monitoring system designed to help plant enthusias
 * Both the terminal and android app require a **stable internet connection**
 * The grove **sensors must be placed appropriately** in the plants environment
 
-## Purpose and Benefits of the app:
+## Purpose and Benefits of the app
 
 The purpose of this app is to help users improve care for their respective plants by providing a monitoring system with real-time data transfer from sensors, and care notifications based on this data. 
 
@@ -47,7 +50,7 @@ The Benefits are:
 •	Access to the data history recorded by each sensor with the click of a button, thus, having a history of conditions the plant has been kept in.
 
 ## Hardware and Software Architecture
-* Hardware Architecture:
+**Hardware Architecture:** <br>
 The project’s hardware architecture consists of the following components: 
  
 A Seeduino WIO terminal, the system’s main control element, it is a microcontroller with integrated Wi-Fi useful for IoT applications. It controls sensor data processing, Wi-Fi network connectivity, and MQTT server management.  It manages communication with external MQTT servers, enabling the system to send and receive commands from a distance.
@@ -58,7 +61,7 @@ Furthermore, the system also includes a soil moisture sensor. Users may easily v
 Overall, the project's hardware architecture allows for effective data collecting, processing, and visualisation, therefore offering a complete solution.
 
 
-* Software Architecture
+**Software Architecture** <br>
 The project’s software architecture consists of the following components: 
 
 An Android app, the front end of the entire system, is an android appliation build just for the user to control and manage its plants. The android application consists connection setup to the MQTT/Mosquito broker and a connection to the NodeJS server to display the historic app data. It allows user to create and manage various plant objects in the app.
@@ -69,25 +72,25 @@ MQTT/Mosquito, a broker user to communicate between almost the entire system tra
 
 Furthermore, the code uploaded on the microcontroller plays an important part in the terminal to work in the right way, thus making sure that the things are good from the get go.
 
-## The main contributions of each Member:
+## The main contributions of each Member
 
-**Georgios Panormitis Latos** 
-* George Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
+**Georgios Panormitis Latos** <br>
+George Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
 
-**Sam Hardingham**
-* Sam took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions. Sam also worked on the Wiki page of the project in its entirety and made the app turorial video along with the app functionality video.
+**Sam Hardingham** <br>
+Sam took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions. Sam also worked on the Wiki page of the project in its entirety and made the app turorial video along with the app functionality video.
 
-**Nishchya Arya**
-* Nishchya took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app's planning stage, and the weekly checkins with the TAs, while simultaneously addressing conflicts and bringing problems onto notice. Nishchya also worked on the app documention including the diagrams and made the ReadMe file almost entirely.
+**Nishchya Arya** <br>
+Nishchya took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app's planning stage, and the weekly checkins with the TAs, while simultaneously addressing conflicts and bringing problems onto notice. Nishchya also worked on the app documention including the diagrams and made the ReadMe file almost entirely.
 
-**Mesimaaria Alastalo** 
-* Mesimaaria was responsible for the notification feature (as a whole) through the existing MQTT connection, comparing the received sensor data to the users desired care conditions. She created the UI for notifications and contributed significantly towards the applications documentation. She also actively participated with in-person discussions, proving as a notably valuable asset by making key points to arguments and steering the project. Her main hardware contribution was refactoring Mohammad’s original Arduino code for the sensors and the terminal.
+**Mesimaaria Alastalo** <br>
+Mesimaaria was responsible for the notification feature (as a whole) through the existing MQTT connection, comparing the received sensor data to the users desired care conditions. She created the UI for notifications and contributed significantly towards the applications documentation. She also actively participated with in-person discussions, proving as a notably valuable asset by making key points to arguments and steering the project. Her main hardware contribution was refactoring Mohammad’s original Arduino code for the sensors and the terminal.
 
-**Simone Graziosi**
-* Simone took care of the MQTT connection towards the app, and played a significant role in coding and refactoring the hardware code. He had a very important role in the brainstorming process of the application as a whole and participated actively in team meetings.
+**Simone Graziosi** <br>
+Simone took care of the MQTT connection towards the app, and played a significant role in coding and refactoring the hardware code. He had a very important role in the brainstorming process of the application as a whole and participated actively in team meetings.
 
-**Mohammad Mohammad**
-* Mohammad made nessecary changes to the wiki page.He edited the Home page , made  open Resources , app features and design pages. He also made and Organized labels, researched mqtt, Received and connected sensors and hardware. Educated other team members about hardware connectivity. His main contribution was sensors data history feature in the app.
+**Mohammad Mohammad** <br>
+Mohammad made nessecary changes to the wiki page.He edited the Home page , made  open Resources , app features and design pages. He also made and Organized labels, researched mqtt, Received and connected sensors and hardware. Educated other team members about hardware connectivity. His main contribution was sensors data history feature in the app.
 
 ## Installation
 **Android Studio Setup:**
@@ -132,7 +135,7 @@ Furthermore, the code uploaded on the microcontroller plays an important part in
 * Follow the on-screen instructions to deploy the app on your Android device or emulator.
 
 
-### Team Information
+## Team Information
 - Georgios Panormitis Latos | [latos](https://git.chalmers.se/latos)
 - Sam Hardingham | [samha](https://git.chalmers.se/samha)
 - Mohammad Mohammad | [mohamoh](https://git.chalmers.se/mohamoh)
@@ -140,7 +143,7 @@ Furthermore, the code uploaded on the microcontroller plays an important part in
 - Nishchya Arya | [nishchya](https://git.chalmers.se/nishchya)
 - Simone Graziosi | [graziosi](https://git.chalmers.se/graziosi)
 
-### Libraries Used
+## Libraries Used
 The following libraries were used in the development of the entire system.
 * implementation 'androidx.recyclerview:recyclerview:1.3.0'
 * implementation 'com.google.code.gson:gson:2.8.9'
