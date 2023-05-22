@@ -46,7 +46,8 @@ The Benefits are:
 
 •	Access to the data history recorded by each sensor with the click of a button, thus, having a history of conditions the plant has been kept in.
 
-## Hardware architecture
+## Hardware and Software Architecture
+* Hardware Architecture:
 The project’s hardware architecture consists of the following components: 
  
 A Seeduino WIO terminal, the system’s main control element, it is a microcontroller with integrated Wi-Fi useful for IoT applications. It controls sensor data processing, Wi-Fi network connectivity, and MQTT server management.  It manages communication with external MQTT servers, enabling the system to send and receive commands from a distance.
@@ -56,16 +57,28 @@ Grove Sensors: Grove sensors are sensors that can be integrated with the Seeduin
 Furthermore, the system also includes a soil moisture sensor. Users may easily view real-time sensor readings for temperature, humidity, soil moisture and light on the Wio terminals TFT display, a graphical user interface. The collected sensor data is essentials for applications including plant monitoring or controlled watering system features. 
 Overall, the project's hardware architecture allows for effective data collecting, processing, and visualisation, therefore offering a complete solution.
 
+
+* Software Architecture
+The project’s software architecture consists of the following components: 
+
+An Android app, the front end of the entire system, is an android appliation build just for the user to control and manage its plants. The android application consists connection setup to the MQTT/Mosquito broker and a connection to the NodeJS server to display the historic app data. It allows user to create and manage various plant objects in the app.
+
+A NodeJS Server, a server used to store the historic sensor data from the terminal that is eventually displayed on the app for the user to keep the track of the exact conditions the plant has been kept in throughout. The data from the terminal is sent to the broker which then sends it to the NodeJS server to store.
+
+MQTT/Mosquito, a broker user to communicate between almost the entire system transmitting data throughout and helping things to flow in the right way. It is the centre most component of out system.
+
+Furthermore, the code uploaded on the microcontroller plays an important part in the terminal to work in the right way, thus making sure that the things are good from the get go.
+
 ## The main contributions of each Member:
 
 **Georgios Panormitis Latos** 
 * George Was responsible for a majority portion of the code inside the app and had significant contributions to the hardware code. He implemented various design patterns, the app background and most of the app’s UI. Additionally, he helped various other group members with coding issues. He had a major role as the go-to person for help in issues of all sorts, be it for the front end or the backend of the project. He consistently presented with solutions to unforeseen problems and could be described as the pillar of the project.
 
 **Sam Hardingham**
-* Sam took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions.
+* Sam took care of git, created issues and helped all group members to solve git related problems. He was also responsible for creating the first skeleton of the app, after creating a Figma design of the app’s UI. Furthermore, he established to connect to a real-time server that stores the sensor data, thus, providing the user with a history of the plant’s conditions. Sam also worked on the Wiki page of the project in its entirety and made the app turorial video along with the app functionality video.
 
 **Nishchya Arya**
-* Nishchya took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app documentation, while simultaneously addressing conflicts and bringing problems onto notice.
+* Nishchya took care of managerial duties for the group, while having a significant contribution towards the front end of the app. He created the settings activity, implementing features such as Different themes, MQTT settings from the app and creating an app tutorial. He also had a major contribution in app's planning stage, and the weekly checkins with the TAs, while simultaneously addressing conflicts and bringing problems onto notice. Nishchya also worked on the app documention including the diagrams and made the ReadMe file almost entirely.
 
 **Mesimaaria Alastalo** 
 * Mesimaaria was responsible for the notification feature (as a whole) through the existing MQTT connection, comparing the received sensor data to the users desired care conditions. She created the UI for notifications and contributed significantly towards the applications documentation. She also actively participated with in-person discussions, proving as a notably valuable asset by making key points to arguments and steering the project. Her main hardware contribution was refactoring Mohammad’s original Arduino code for the sensors and the terminal.
@@ -77,10 +90,48 @@ Overall, the project's hardware architecture allows for effective data collectin
 * Mohammad made nessecary changes to the wiki page.He edited the Home page , made  open Resources , app features and design pages. He also made and Organized labels, researched mqtt, Received and connected sensors and hardware. Educated other team members about hardware connectivity. His main contribution was sensors data history feature in the app.
 
 ## Installation
+**Android Studio Setup:**
+* Download and install Android Studio from the official website (https://developer.android.com/studio).
+* Follow the installation wizard and configure Android Studio according to your system requirements.
+* Once installed, open Android Studio and set up the necessary SDKs and emulators.
+* Clone the code from the GitLab.
 
-## Usage
+**Arduino IDE Setup:**
+* Download and install the Arduino IDE from the official website (https://www.arduino.cc/en/software).
+* Follow the installation instructions for your specific operating system.
+* Launch the Arduino IDE once installed.
 
-## Acknowledgements
+**Wio Terminal Setup:**
+* Connect your Wio Terminal to your computer using a USB cable.
+* Install the necessary drivers for the Wio Terminal if prompted by your operating system.
+
+**Sensor Connections:**
+* Identify the pins on your Wio Terminal for the Humidity, Temperature, Moisture, and Light sensors.
+* Connect the sensors to the appropriate pins on the Wio Terminal, ensuring proper wiring and connections.
+
+**Library Installation inside the Arduino:**
+* Open the Arduino IDE.
+* Go to "Sketch" > "Include Library" > "Manage Libraries".
+* Search for and install the required libraries for your sensors and any additional functionality you need.
+* Close the library manager once the installation is complete.
+
+**GitLab Repository:**
+* Create a GitLab account (https://gitlab.com) if you don't have one already.
+
+**Cloning the Project:**
+* Open a terminal or command prompt on your computer.
+* Navigate to the directory where you want to clone the project.
+* Run the following command to clone the project repository: git clone <repository-url>
+* Replace <repository-url> with the URL of your GitLab repository.
+
+**Running the Project:**
+* Open the cloned project in Android Studio.
+* Connect your Android device to your computer or start an emulator.
+* Build the project by clicking on the "Build" button in Android Studio.
+* Run the project by clicking on the "Run" button in Android Studio.
+* Follow the on-screen instructions to deploy the app on your Android device or emulator.
+
+
 ### Team Information
 - Georgios Panormitis Latos | [latos](https://git.chalmers.se/latos)
 - Sam Hardingham | [samha](https://git.chalmers.se/samha)
