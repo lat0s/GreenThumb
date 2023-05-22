@@ -54,7 +54,7 @@ public class Settings extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                URL("https://www.youtube.com/watch?v=OwCZq-maNb0");
+                URL("https://youtu.be/ro6_CHGE1a4");
             }
         });
         mail = findViewById(R.id.textView4);
@@ -62,7 +62,7 @@ public class Settings extends AppCompatActivity {
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                URL("mailto:nishchya@hotmail.com");
+                URL("mailto:gusaryni@student.gu.se");
             }
         });
 
