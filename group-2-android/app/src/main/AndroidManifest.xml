@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+
+
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,12 +19,15 @@
         android:theme="@style/Theme.NotGreenThumb"
         tools:targetApi="31">
         <activity
+            android:name=".SensorData"
+            android:exported="false" />
+        <activity
             android:name=".PlantProfile"
             android:exported="false" />
         <activity
             android:name=".PlantMakerActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".CareNotifications"
             android:exported="false" />
