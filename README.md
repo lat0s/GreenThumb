@@ -6,9 +6,10 @@
 5. [Hardware and Software Architecture](#Hardware and Software Architecture)
 6. [Team Contributions](#The main contributions of each Member)
 7. [Installation Guide](#installation)
-8. [Team Information](#Team Information)
-9. [Libraries User](#Libraries Used)
-10. [Wiki](#wiki)
+8. [Usage](#Usage)
+9. [Team Information](#Team Information)
+10. [Libraries User](#Libraries Used)
+11. [Wiki](#wiki)
 
 ## Introduction
 Green Thumb is a simple plant monitoring system designed to help plant enthusiasts of all levels better understand and care for their plants. By using a Wio Seeed Terminal with MQTT and Grove Sensors, Green Thumb allows users to monitor their plants' temperature, soil moisture, and light conditions, providing care recommendations and notifications to help them provide the optimal conditions for their plants.
@@ -25,8 +26,9 @@ Green Thumb is a simple plant monitoring system designed to help plant enthusias
 
 ## Prerequisites
 * The system only runs on **compatible android devices** (latest version preferred)
-* Both the terminal and android app require a **stable internet connection**
+* The terminal, server and android app require a **stable internet connection** (must be on the same wifi network)
 * The grove **sensors must be placed appropriately** in the plants environment
+* The machine running the server must have Mosquitto and NodeJS installed
 
 ## Purpose and Benefits of the app
 
@@ -103,6 +105,8 @@ Mohammad made nessecary changes to the wiki page.He edited the Home page , made 
 * Download and install the Arduino IDE from the official website (https://www.arduino.cc/en/software).
 * Follow the installation instructions for your specific operating system.
 * Launch the Arduino IDE once installed.
+* Open the sketch contained in the "Arduino" folder of the project repository
+* Change the wifi credentials at the top to correspond to your home wifi
 
 **Wio Terminal Setup:**
 * Connect your Wio Terminal to your computer using a USB cable.
@@ -121,6 +125,15 @@ Mohammad made nessecary changes to the wiki page.He edited the Home page , made 
 **GitLab Repository:**
 * Create a GitLab account (https://gitlab.com) if you don't have one already.
 
+**NodeJS**
+* Open the server.js file.
+* Change the mqtt.connnect to your machine's IPV4 address.
+* (Line 10 of server.js file)
+
+**Mosquitto**
+* Run the startMQTT batch file in the greenThumbNodeJS folder
+* Make sure the code in the batch file is directed to your mosquitto installation folder
+
 **Cloning the Project:**
 * Open a terminal or command prompt on your computer.
 * Navigate to the directory where you want to clone the project.
@@ -134,6 +147,12 @@ Mohammad made nessecary changes to the wiki page.He edited the Home page , made 
 * Run the project by clicking on the "Run" button in Android Studio.
 * Follow the on-screen instructions to deploy the app on your Android device or emulator.
 
+## Usage
+* 1. Upload the Arduino code onto your Wio Terminal
+* 2. Start the MQTT server with the startMQTT batch file
+* 3. Start the nodeJS server with the startServer batch file
+* 4. Open the application on your android device and input your mqtt credentials in the settings page
+* 5. You will receive a confirmation message on the app and welcome screen on the terminal if everything is connected!
 
 ## Team Information
 - Georgios Panormitis Latos | [latos](https://git.chalmers.se/latos)
