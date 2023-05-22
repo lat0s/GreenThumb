@@ -16,6 +16,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.notgreenthumb.adapters.DialogBuilderAdapter;
@@ -27,7 +28,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
@@ -45,6 +45,7 @@ public class Dashboard extends AppCompatActivity {
     private FloatingActionButton addPlantButton;
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
+    private Button hey;
 
 
     @Override
@@ -83,6 +84,7 @@ public class Dashboard extends AppCompatActivity {
         addPlantButton = findViewById(R.id.addPlantButton);
         viewPager = findViewById(R.id.horizontalRecyclerView);
         tabLayout = findViewById(R.id.tab_layout);
+        hey = findViewById(R.id.GetSensorData);
 
     }
 
@@ -101,6 +103,13 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openPlantMakerActivity();
+            }
+        });
+
+        hey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSensorData();
             }
         });
     }
@@ -161,24 +170,19 @@ public class Dashboard extends AppCompatActivity {
         if (json != null) {
             Gson gson = new Gson();
             TypeToken<ArrayList<Plant>> token = new TypeToken<ArrayList<Plant>>() {};
-            try {
-                ArrayList<Plant> loadedPlantList = gson.fromJson(json, token.getType());
+            ArrayList<Plant> loadedPlantList = gson.fromJson(json, token.getType());
 
-                if (loadedPlantList != null) {
-                    plantList.clear();
-                    plantList.addAll(loadedPlantList);
-                    plantAdapter.notifyDataSetChanged();
-                } else {
-                    Log.e(TAG, "Failed to parse plant list from shared preferences");
-                }
-            } catch (JsonParseException e) {
-                Log.e(TAG, "Failed to parse plant list from shared preferences: invalid JSON", e);
+            if (loadedPlantList != null) {
+                plantList.clear();
+                plantList.addAll(loadedPlantList);
+                plantAdapter.notifyDataSetChanged();
+            } else {
+                Log.e(TAG, "Failed to parse plant list from shared preferences");
             }
         } else {
             Log.i(TAG, "No saved plant list found in shared preferences");
         }
     }
-
 
     /**
      * Clears the plant list and updates the adapter.
@@ -218,20 +222,17 @@ public class Dashboard extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE_PLANT_MAKER && resultCode == RESULT_OK && data != null) {
-            Plant newPlant = (Plant) data.getSerializableExtra("newPlant");
+            if (data.hasExtra("newPlant")) {
+                Plant newPlant = (Plant) data.getSerializableExtra("newPlant");
 
-            if (newPlant != null) {
                 plantList.add(newPlant);
                 plantAdapter.notifyDataSetChanged();
 
                 savePlantList();
 
-                Log.d(TAG, "New plant added: " + newPlant.toString() + newPlant.getPlantName());
-            } else {
-                Log.e(TAG, "Received null Plant object from PlantMakerActivity");
+                Log.d(TAG, "New plant added: " + newPlant.toString());
             }
         }
-
     }
 
     /**
@@ -291,11 +292,14 @@ public class Dashboard extends AppCompatActivity {
         startActivity(toSettings);
     }
 
-    /**
-     * Opens the CareNotifications activity.
-     */
+
     private void goToNotifications() {
         Intent toNotifications = new Intent(this, CareNotifications.class);
         startActivity(toNotifications);
+    }
+
+    private void getSensorData() {
+        Intent sensorData = new Intent(this, SensorData.class);
+        startActivity(sensorData);
     }
 }
