@@ -182,7 +182,7 @@ The following libraries were used in the development of the entire system.
 * androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 * androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-### Project status - in development
+### Project status - Completed
 
 ## [Wiki](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/home)
 
