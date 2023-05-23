@@ -52,6 +52,9 @@ The Benefits are:
 •	Access to the data history recorded by each sensor with the click of a button, thus, having a history of conditions the plant has been kept in.
 
 ## Hardware and Software Architecture
+
+![System Design](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/raw/main/assets/systemdesign.png)
+
 **Hardware Architecture:** <br>
 The project’s hardware architecture consists of the following components: 
  
@@ -64,6 +67,9 @@ Overall, the project's hardware architecture allows for effective data collectin
 
 
 **Software Architecture** <br>
+
+![System Design](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/raw/main/assets/Android_App.png)
+
 The project’s software architecture consists of the following components: 
 
 An Android app, the front end of the entire system, is an android appliation build just for the user to control and manage its plants. The android application consists connection setup to the MQTT/Mosquito broker and a connection to the NodeJS server to display the historic app data. It allows user to create and manage various plant objects in the app.
@@ -183,6 +189,8 @@ The following libraries were used in the development of the entire system.
 * androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 ### Project status - Completed
+
+## [Presentation Video](https://www.youtube.com/watch?v=ro6_CHGE1a4)
 
 ## [Wiki](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/home)
 
