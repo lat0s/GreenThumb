@@ -17,7 +17,7 @@ public class Mqtt_Settings extends AppCompatActivity {
     private static final String PREFS_NAME = "MqttPrefs";
     private static final String PREF_BROKER_URL = "brokerUrl";
     private static final String PREF_CLIENT_ID = "clientId";
-    private static final int REQUEST_CODE_SETTINGS = 1;
+
 
     private MqttDataUpdateListener dataUpdateListener;
 
