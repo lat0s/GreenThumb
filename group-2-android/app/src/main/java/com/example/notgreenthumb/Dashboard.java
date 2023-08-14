@@ -85,12 +85,7 @@ public class Dashboard extends AppCompatActivity {
     private void setListeners() {
         menuButton.setOnClickListener(view -> showCustomPopupMenu(view));
 
-        addPlantButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPlantMakerActivity();
-            }
-        });
+        addPlantButton.setOnClickListener(view -> openPlantMakerActivity());
 
         hey.setOnClickListener(new View.OnClickListener() {
             @Override
