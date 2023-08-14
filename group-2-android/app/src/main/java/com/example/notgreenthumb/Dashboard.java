@@ -220,8 +220,7 @@ public class Dashboard extends AppCompatActivity {
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle("Select an option")
-                .setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                .setAdapter(adapter, (dialog,which) -> {
                         // The 'which' argument contains the index position of the selected item
                         switch (which) {
                             case 0:
@@ -234,7 +233,6 @@ public class Dashboard extends AppCompatActivity {
                                 showClearPlantListConfirmation();
                                 break;
                         }
-                    }
                 })
                 .show();
     }
