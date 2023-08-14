@@ -1,10 +1,8 @@
 package com.example.notgreenthumb;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.*;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,14 +21,17 @@ import com.example.notgreenthumb.mqtt.MqttHelper;
 import com.example.notgreenthumb.plants.Plant;
 
 public class PlantProfile extends AppCompatActivity {
+    private static final int REQUEST_CODE_WATERING = 3;
     private TextView yourPlant;
     private ImageView plantPicture;
 
     private ConstraintLayout layoutProfile;
     private Button back;
+    private Button waterButton;
+    private Button historyButton;
     private Context context;
 
-    private static final int REQUEST_CODE_DASHBOARD = 1;
+    private static final int REQUEST_CODE_DASHBOARD = 2;
 
     private MqttHelper mqttHelper;
     private Plant plant;
@@ -44,6 +45,13 @@ public class PlantProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_profile);
 
+        waterButton = findViewById(R.id.waterButton);
+        historyButton = findViewById(R.id.historyButton);
+
+        waterButton.setOnClickListener(view -> water());
+        historyButton.setOnClickListener(view -> toHistory());
+
+
         layoutProfile = findViewById(R.id.layoutProfile);
 
         yourPlant = findViewById(R.id.yourplant);
@@ -54,12 +62,7 @@ public class PlantProfile extends AppCompatActivity {
 
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backToDash();
-            }
-        });
+        back.setOnClickListener(view -> backToDash());
 
         SharedPreferences prefs = getSharedPreferences("MqttPrefs", MODE_PRIVATE);
         String brokerUrl = prefs.getString("brokerUrl", "tcp://192.168.50.9:1883");
@@ -108,9 +111,32 @@ public class PlantProfile extends AppCompatActivity {
         setupBackgroundAnimation();
     }
 
+    private void toHistory() {
+        Intent intent = new Intent(PlantProfile.this,Watering.class);
+        intent.putExtra("plant",plant);
+        startActivityForResult(intent,REQUEST_CODE_WATERING);
+    }
+
+    private void water() {
+        long currentTime = System.currentTimeMillis();
+        plant.addToWateringHistory(currentTime);
+        showWateredDialog();
+    }
+    private void showWateredDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(plant.getPlantName());
+        builder.setMessage("Was watered!");
+        builder.setPositiveButton("OK", null);
+        builder.setIcon(getResources().getDrawable(R.drawable.wateringcan));
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private void backToDash() {
-        Intent intent = new Intent(PlantProfile.this, Dashboard.class);
-        startActivityForResult(intent, REQUEST_CODE_DASHBOARD);
+        Intent intent = new Intent();
+        intent.putExtra("plant",plant);
+        setResult(RESULT_OK,intent);
+        finish();
     }
 
     private void setupBackgroundAnimation() {
@@ -150,6 +176,12 @@ public class PlantProfile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_DASHBOARD && resultCode == RESULT_OK) {
             mqttHelper.disconnect();
+        }
+        else if (requestCode == REQUEST_CODE_WATERING && resultCode == RESULT_OK){
+            if (data.hasExtra("plant")) {
+                plant = (Plant) data.getSerializableExtra("plant");
+            }
+
         }
     }
 

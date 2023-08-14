@@ -90,7 +90,7 @@
                             Intent intent = new Intent();
                             intent.putExtra("newPlant", newPlant);
                             setResult(RESULT_OK, intent);
-                            Log.d(TAG,"IMage position is " + newPlant.getImageIndex() + selectedImageIndex);
+                            Log.d("TAG","IMage position is " + newPlant.getImageIndex() + selectedImageIndex);
                             finish();
                         }
                     });

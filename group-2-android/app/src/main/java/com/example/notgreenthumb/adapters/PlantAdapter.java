@@ -1,7 +1,6 @@
 package com.example.notgreenthumb.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.cardview.widget.CardView;
 
-import com.example.notgreenthumb.PlantProfile;
 import com.example.notgreenthumb.R;
 import com.example.notgreenthumb.plants.Plant;
 
@@ -22,6 +20,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
 
     private Context context;
     private ArrayList<Plant> plantList;
+    private OnItemClickListener onItemClickListener;
 
     public PlantAdapter(Context context, ArrayList<Plant> plantList) {
         this.context = context;
@@ -62,11 +61,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        Plant clickedPlant = plantList.get(position);
-                        Intent intent = new Intent(context, PlantProfile.class);
-                        intent.putExtra("plant", clickedPlant);
-                        context.startActivity(intent);
+                    if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                        onItemClickListener.onItemClick(position);
                     }
                 }
             });
@@ -78,6 +74,13 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             plantImageView.setImageResource(resID);
             plantNameTextView.setText(plantItem.getPlantName());
         }
+    }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 }

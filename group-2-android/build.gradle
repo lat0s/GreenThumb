@@ -2,15 +2,8 @@
 plugins {
     id 'com.android.application' version '7.4.2' apply false
     id 'com.android.library' version '7.4.2' apply false
+    id 'org.sonarqube' version '4.2.1.3168'
 }
-
-sonar {
-  properties {
-    property "sonar.projectKey", "GreenThumb"
-    property "sonar.projectName", "GreenThumb"
-    property "sonar.qualitygate.wait", true 
-	id "org.sonarqube" version "4.2.1.3168"
-  }
 
 allprojects {
     repositories {
