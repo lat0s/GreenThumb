@@ -223,6 +223,8 @@ public class Dashboard extends AppCompatActivity {
                 .setAdapter(adapter, (dialog,which) -> {
                         // The 'which' argument contains the index position of the selected item
                         switch (which) {
+                            default:
+                                break;
                             case 0:
                                 goToSettings();
                                 break;
