@@ -17,7 +17,6 @@ public class Mqtt_Settings extends AppCompatActivity {
     private static final String PREFS_NAME = "MqttPrefs";
     private static final String PREF_BROKER_URL = "brokerUrl";
     private static final String PREF_CLIENT_ID = "clientId";
-    private Button back, connect;
     private EditText host, port;
     private static final int REQUEST_CODE_SETTINGS = 1;
 
@@ -25,6 +24,7 @@ public class Mqtt_Settings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button back;
         SharedPreferences prefs;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mqtt_settings);
