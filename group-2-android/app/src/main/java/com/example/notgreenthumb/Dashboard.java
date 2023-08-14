@@ -246,12 +246,7 @@ public class Dashboard extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Clear Plant List");
         builder.setMessage("Are you sure you want to clear the plant list?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                clearPlantList();
-            }
-        });
+        builder.setPositiveButton("Yes", (dialog, which) -> clearPlantList());
         builder.setNegativeButton("No", null);
         builder.show();
     }
