@@ -61,12 +61,6 @@ public class Dashboard extends AppCompatActivity {
 
         // Setup RecyclerView
         setupRecyclerView();
-//        viewPager.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-//            }
-//        }, 1);
 
         // Load plant list from shared preferences
         loadPlantList();
