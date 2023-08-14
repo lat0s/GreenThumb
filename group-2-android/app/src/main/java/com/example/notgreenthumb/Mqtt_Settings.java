@@ -25,6 +25,7 @@ public class Mqtt_Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button back;
+        Button connect;
         SharedPreferences prefs;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mqtt_settings);
