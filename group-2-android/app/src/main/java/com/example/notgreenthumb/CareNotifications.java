@@ -15,12 +15,7 @@ public class CareNotifications extends AppCompatActivity {
         setContentView(R.layout.activity_care_notifications);
 
         Button careNotificationsToHome = (Button)findViewById(R.id.NotificationsToHomeButton);
-        careNotificationsToHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goHome();
-            }
-        });
+        careNotificationsToHome.setOnClickListener(view -> goHome());
 
     }
 
