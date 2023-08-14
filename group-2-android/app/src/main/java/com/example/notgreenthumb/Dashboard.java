@@ -87,12 +87,7 @@ public class Dashboard extends AppCompatActivity {
 
         addPlantButton.setOnClickListener(view -> openPlantMakerActivity());
 
-        hey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSensorData();
-            }
-        });
+        hey.setOnClickListener(view -> getSensorData());
     }
 
     /**
