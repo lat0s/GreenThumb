@@ -128,10 +128,7 @@ public class Dashboard extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> {
-                    // Set the tab text or custom view if needed
-                    // tab.setText("Tab " + (position + 1));
-                }).attach();
+                (tab, position) -> {}).attach();
     }
 
 
