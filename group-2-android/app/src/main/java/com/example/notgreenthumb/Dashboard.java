@@ -32,6 +32,8 @@ import java.util.ArrayList;
 public class Dashboard extends AppCompatActivity {
     private static final String TAG = "Dashboard";
     private static final int REQUEST_CODE_PLANT_MAKER = 1;
+    private static final int REQUEST_CODE_PLANT_PROFILE = 2;
+    private static final int REQUEST_CODE_WATERING = 3;
 
     private ArrayList<Plant> plantList;
     private PlantAdapter plantAdapter;
@@ -124,11 +126,20 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-
-
         TabLayout tabLayout = findViewById(R.id.tab_layout);
-        new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> {}).attach();
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            tab.setText("" + (position + 1));
+        }).attach();
+
+        plantAdapter.setOnItemClickListener(new PlantAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Plant clickedPlant = plantList.get(position);
+                Intent intent = new Intent(Dashboard.this, PlantProfile.class);
+                intent.putExtra("plant", clickedPlant);
+                startActivityForResult(intent, REQUEST_CODE_PLANT_PROFILE);
+            }
+        });
     }
 
 
@@ -193,6 +204,7 @@ public class Dashboard extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d("TAG","works");
 
         if (requestCode == REQUEST_CODE_PLANT_MAKER && resultCode == RESULT_OK && data != null) {
             if (data.hasExtra("newPlant")) {
@@ -204,6 +216,24 @@ public class Dashboard extends AppCompatActivity {
                 savePlantList();
 
                 Log.d(TAG, "New plant added: " + newPlant.toString());
+            }
+        }
+       else if (requestCode == REQUEST_CODE_PLANT_PROFILE && resultCode == RESULT_OK){
+            if (data.hasExtra("plant")) {
+                Plant plantFromProfile = (Plant) data.getSerializableExtra("plant");
+                replacePlant(plantFromProfile);
+                }
+            }
+        }
+
+    private void replacePlant(Plant updatedPlant) {
+        for (int i = 0; i < plantList.size(); i++) {
+            Plant plant = plantList.get(i);
+            if (plant.getPlantName().equals(updatedPlant.getPlantName())) {
+                plantList.set(i, updatedPlant);
+                plantAdapter.notifyDataSetChanged();
+                savePlantList();
+                break; // Exit loop after finding and replacing the plant
             }
         }
     }
