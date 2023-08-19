@@ -22,6 +22,7 @@ import com.example.notgreenthumb.plants.Plant;
 
 public class PlantProfile extends AppCompatActivity {
     private static final int REQUEST_CODE_WATERING = 3;
+    private static final int REQUEST_CODE_GRAPHS = 5;
     private TextView yourPlant;
     private ImageView plantPicture;
 
@@ -44,6 +45,10 @@ public class PlantProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_profile);
+
+        Button graphButton = findViewById(R.id.graphButton);
+
+        graphButton.setOnClickListener(view -> toGraphs());
 
         waterButton = findViewById(R.id.waterButton);
         historyButton = findViewById(R.id.historyButton);
@@ -109,6 +114,12 @@ public class PlantProfile extends AppCompatActivity {
 
 
         setupBackgroundAnimation();
+    }
+
+    private void toGraphs() {
+        Intent intent = new Intent(PlantProfile.this,Graphs.class);
+        intent.putExtra("plant",plant);
+        startActivity(intent);
     }
 
     private void toHistory() {
@@ -182,6 +193,11 @@ public class PlantProfile extends AppCompatActivity {
                 plant = (Plant) data.getSerializableExtra("plant");
             }
 
+        }
+        else if (requestCode == REQUEST_CODE_GRAPHS && resultCode == RESULT_OK){
+            if (data.hasExtra("plant")) {
+                plant = (Plant) data.getSerializableExtra("plant");
+            }
         }
     }
 
