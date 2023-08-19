@@ -44,7 +44,7 @@ public class Dashboard extends AppCompatActivity {
     private FloatingActionButton addPlantButton;
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
-    private Button hey;
+//    private Button hey;
 
 
     @Override
@@ -77,7 +77,7 @@ public class Dashboard extends AppCompatActivity {
         addPlantButton = findViewById(R.id.addPlantButton);
         viewPager = findViewById(R.id.horizontalRecyclerView);
         tabLayout = findViewById(R.id.tab_layout);
-        hey = findViewById(R.id.GetSensorData);
+//        hey = findViewById(R.id.GetSensorData);
 
     }
 
@@ -89,7 +89,7 @@ public class Dashboard extends AppCompatActivity {
 
         addPlantButton.setOnClickListener(view -> openPlantMakerActivity());
 
-        hey.setOnClickListener(view -> getSensorData());
+//        hey.setOnClickListener(view -> getSensorData());
     }
 
     /**
@@ -296,8 +296,8 @@ public class Dashboard extends AppCompatActivity {
         startActivity(toNotifications);
     }
 
-    private void getSensorData() {
-        Intent sensorData = new Intent(this, SensorData.class);
-        startActivity(sensorData);
-    }
+//    private void getSensorData() {
+//        Intent sensorData = new Intent(this, SensorData.class);
+//        startActivity(sensorData);
+//    }
 }
