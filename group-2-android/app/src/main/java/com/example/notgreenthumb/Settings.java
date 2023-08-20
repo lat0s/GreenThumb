@@ -1,14 +1,13 @@
 package com.example.notgreenthumb;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class Settings extends AppCompatActivity {
     Button button;
@@ -27,60 +26,33 @@ public class Settings extends AppCompatActivity {
         // Initialize the night mode state
         isNightModeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
 
-        theme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Toggle the night mode state
-                isNightModeOn = !isNightModeOn;
+        theme.setOnClickListener(view -> {
+            // Toggle the night mode state
+            isNightModeOn = !isNightModeOn;
 
-                // Update the night mode immediately
-                if (isNightModeOn) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
+            // Update the night mode immediately
+            if (isNightModeOn) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
 
         database = findViewById(R.id.PlantDatabaseButton);
-        database.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                URL("https://www.dropbox.com/s/iwppwrmsyxeitt1/GreenThumb%20Plant%20Database%20.pdf?dl=0");}
-        });
+        database.setOnClickListener(view -> URL("https://www.dropbox.com/s/iwppwrmsyxeitt1/GreenThumb%20Plant%20Database%20.pdf?dl=0"));
 
         button = findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                URL("https://youtu.be/ro6_CHGE1a4");
-            }
-        });
+        button.setOnClickListener(view -> URL("https://youtu.be/ro6_CHGE1a4"));
         mail = findViewById(R.id.textView4);
 
-        mail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                URL("mailto:gusaryni@student.gu.se");
-            }
-        });
+        mail.setOnClickListener(view -> URL("mailto:gusaryni@student.gu.se"));
 
         Button settingsToHome = (Button)findViewById(R.id.settingsToHomeButton);
-        settingsToHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goHome();
-            }
-        });
+        settingsToHome.setOnClickListener(view -> goHome());
 
         mqttSettings = findViewById(R.id.MqttSettingsButton);
-        mqttSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goMqttSettings();
-            }
-        });
+        mqttSettings.setOnClickListener(view -> goMqttSettings());
     }
 
     private void URL(String s) {

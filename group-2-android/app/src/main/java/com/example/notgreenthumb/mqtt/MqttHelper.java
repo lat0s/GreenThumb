@@ -142,21 +142,28 @@ public class MqttHelper {
 
 
     private void onMqttDataReceived(String topic, String data) {
-        // parse the data received
-        String[] dataValues = data.split(",");
-        if (dataValues.length == 4) {
-            String temperature = dataValues[0];
-            String humidity = dataValues[1];
-            String light = dataValues[2];
-            String soil_moisture = dataValues[3];
+        // Ensure data and dataUpdateListener are not null
+        if (data != null && dataUpdateListener != null) {
+            Log.d("MqttHelper","Data not null called onMqttDataReceived");
+            // parse the data received
+            String[] dataValues = data.split(",");
+            if (dataValues.length == 4) {
+                String temperature = dataValues[0];
+                String humidity = dataValues[1];
+                String light = dataValues[2];
+                String soil_moisture = dataValues[3];
 
-            // update the data for each parameter
-            dataUpdateListener.onMqttDataUpdate("temperature", temperature);
-            dataUpdateListener.onMqttDataUpdate("humidity", humidity);
-            dataUpdateListener.onMqttDataUpdate("light", light);
-            dataUpdateListener.onMqttDataUpdate("soil_moisture", soil_moisture);
-        } else {
-            Log.e(TAG, "Received data in incorrect format");
+                // update the data for each parameter
+                dataUpdateListener.onMqttDataUpdate("temperature", temperature);
+                dataUpdateListener.onMqttDataUpdate("humidity", humidity);
+                dataUpdateListener.onMqttDataUpdate("light", light);
+                dataUpdateListener.onMqttDataUpdate("soil_moisture", soil_moisture);
+            } else {
+                Log.e(TAG, "Received data in incorrect format");
+            }
+        } else if (dataUpdateListener == null){
+            Log.e(TAG, "dataUpdateListener is null");
         }
     }
+
 }

@@ -1,8 +1,5 @@
 package com.example.notgreenthumb;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +9,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.notgreenthumb.plants.Plant;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,22 +52,19 @@ public class Watering extends AppCompatActivity {
         }
         back.setOnClickListener(view -> backToProfile());
 
-        historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (plant != null) {
-                    long timestamp = plant.getWateringHistory().get(position);
-                    String formattedTimestamp = "Watered: " + sdf.format(new Date(timestamp));
-                    long elapsedTimeMillis = System.currentTimeMillis() - timestamp;
+        historyListView.setOnItemClickListener((parent, view, position, id) -> {
+            if (plant != null) {
+                long timestamp = plant.getWateringHistory().get(position);
+                String formattedTimestamp = "Watered: " + sdf.format(new Date(timestamp));
+                long elapsedTimeMillis = System.currentTimeMillis() - timestamp;
 
 
-                    long hours = TimeUnit.MILLISECONDS.toHours(elapsedTimeMillis);
-                    long minutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTimeMillis) - TimeUnit.HOURS.toMinutes(hours);
+                long hours = TimeUnit.MILLISECONDS.toHours(elapsedTimeMillis);
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTimeMillis) - TimeUnit.HOURS.toMinutes(hours);
 
 
-                    String elapsedTimeString = "This entry was " + hours + " hours and " + minutes + " minutes ago";
-                    showTimestampDialog(formattedTimestamp, elapsedTimeString);
-                }
+                String elapsedTimeString = "This entry was " + hours + " hours and " + minutes + " minutes ago";
+                showTimestampDialog(formattedTimestamp, elapsedTimeString);
             }
         });
     }
