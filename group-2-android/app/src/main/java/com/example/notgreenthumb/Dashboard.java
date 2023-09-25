@@ -1,10 +1,7 @@
 package com.example.notgreenthumb;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -64,12 +61,6 @@ public class Dashboard extends AppCompatActivity {
 
         // Setup RecyclerView
         setupRecyclerView();
-//        viewPager.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-//            }
-//        }, 1);
 
         // Load plant list from shared preferences
         loadPlantList();
@@ -92,26 +83,11 @@ public class Dashboard extends AppCompatActivity {
      * Sets the click listeners for the buttons.
      */
     private void setListeners() {
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCustomPopupMenu(v);
-            }
-        });
+        menuButton.setOnClickListener(view -> showCustomPopupMenu(view));
 
-        addPlantButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPlantMakerActivity();
-            }
-        });
+        addPlantButton.setOnClickListener(view -> openPlantMakerActivity());
 
-        hey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSensorData();
-            }
-        });
+        hey.setOnClickListener(view -> getSensorData());
     }
 
     /**
@@ -152,10 +128,7 @@ public class Dashboard extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> {
-                    // Set the tab text or custom view if needed
-                    // tab.setText("Tab " + (position + 1));
-                }).attach();
+                (tab, position) -> {}).attach();
     }
 
 
@@ -247,10 +220,11 @@ public class Dashboard extends AppCompatActivity {
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle("Select an option")
-                .setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                .setAdapter(adapter, (dialog,which) -> {
                         // The 'which' argument contains the index position of the selected item
                         switch (which) {
+                            default:
+                                break;
                             case 0:
                                 goToSettings();
                                 break;
@@ -261,7 +235,6 @@ public class Dashboard extends AppCompatActivity {
                                 showClearPlantListConfirmation();
                                 break;
                         }
-                    }
                 })
                 .show();
     }
@@ -273,12 +246,7 @@ public class Dashboard extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Clear Plant List");
         builder.setMessage("Are you sure you want to clear the plant list?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                clearPlantList();
-            }
-        });
+        builder.setPositiveButton("Yes", (dialog, which) -> clearPlantList());
         builder.setNegativeButton("No", null);
         builder.show();
     }
