@@ -1,3 +1,7 @@
+<div align="center">
+<img src="https://github.com/lat0s/GreenThumb/blob/main/assets/logo.png?raw=true" width="128" height="128">
+</div>
+
 # Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
