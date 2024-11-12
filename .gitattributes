@@ -7,6 +7,9 @@
 group-2-android/**/*.xml linguist-language=XML
 group-2-android/**/*.java linguist-language=Java
 
+# Ensure Java files in specific directory are recognized
+group-2-android/app/src/main/java/com/example/notgreenthumb/**/*.java linguist-language=Java
+
 # JavaScript and JSON files in NodeJS project
 greenThumbNodeJS/**/*.js linguist-language=JavaScript
 greenThumbNodeJS/**/*.json linguist-language=JSON
