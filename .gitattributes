@@ -1,18 +1,17 @@
 # Force specific languages for Android project files
-
 # Java and Kotlin files in main project folders
 *.java linguist-language=Java
 *.kt linguist-language=Kotlin
 
 # XML files used for layout, resources, etc.
-greenThumbNodeJS/**/*.js linguist-language=JavaScript
-greenThumbNodeJS/**/*.json linguist-language=JSON
-
-
-
 group-2-android/**/*.xml linguist-language=XML
 group-2-android/**/*.java linguist-language=Java
 
+# JavaScript and JSON files in NodeJS project
+greenThumbNodeJS/**/*.js linguist-language=JavaScript
+greenThumbNodeJS/**/*.json linguist-language=JSON
+
+# C++ and related files in Arduino libraries
 arduino/libraries/**/*.ino linguist-language=C++
 arduino/libraries/**/*.h linguist-language=C++
 arduino/libraries/**/*.cpp linguist-language=C++
@@ -25,15 +24,5 @@ arduino/libraries/**/*.hh linguist-language=C++
 arduino/libraries/**/*.c++ linguist-language=C++
 arduino/libraries/**/*.h++ linguist-language=C++
 
-# Force certain file types to be recognized as Android project languages
+# Groovy files for Gradle build scripts
 *.gradle linguist-language=Groovy
-*.xml linguist-language=XML
-*.pro linguist-language=Text
-
-# Set other languages if necessary (example: ignore or set Markdown as documentation)
-*.md linguist-documentation
-*.json linguist-language=JSON
-
-# Ignore build and dependency files (optional, helps reduce noise in language stats)
-build/** linguist-vendored
-gradle/** linguist-vendored
