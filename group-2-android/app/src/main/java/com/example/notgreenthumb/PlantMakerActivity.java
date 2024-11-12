@@ -10,7 +10,6 @@
             import android.text.TextUtils;
             import android.text.TextWatcher;
             import android.util.Log;
-            import android.view.View;
             import android.widget.Button;
             import android.widget.EditText;
             import android.widget.Toast;
@@ -29,10 +28,8 @@
             public class PlantMakerActivity extends AppCompatActivity {
                 // Field declarations
                 private EditText plantNameEditText;
-                private Button createPlantButton;
                 private static final String TAG = "PlantMaker";
                 private static final int REQUEST_CODE_DASHBOARD = 1;
-                private Button back;
                 private int selectedImageIndex;
                 private ConstraintLayout pmkerLayout;
                 private Plant newPlant;
@@ -47,9 +44,9 @@
 
                     // Initialize the UI components
                     plantNameEditText = findViewById(R.id.plantNameEditText);
-                    createPlantButton = findViewById(R.id.createPlantButton);
+                    Button createPlantButton = findViewById(R.id.createPlantButton);
                     pmkerLayout = findViewById(R.id.constraintLayoutPmker);
-                    back = findViewById(R.id.backButton);
+                    Button back = findViewById(R.id.backButton);
                     back.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
 
                     // Initialize plant object
@@ -71,35 +68,24 @@
                     imageRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
                     List<Integer> imageList = getPlantImages();
-                    CreatePlantImageAdapter createPlantImageAdapter = new CreatePlantImageAdapter(this, imageList, new CreatePlantImageAdapter.OnImageClickListener() {
-                        @Override
-                        public void onImageClick(int position) {
-                            position++;
-                            selectedImageIndex = position;
-                        }
+                    CreatePlantImageAdapter createPlantImageAdapter = new CreatePlantImageAdapter(this, imageList, position -> {
+                        position++;
+                        selectedImageIndex = position;
                     });
                     imageRecyclerView.setAdapter(createPlantImageAdapter);
 
                     // Define the button click behavior
-                    createPlantButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            String plantName = plantNameEditText.getText().toString();
-                            newPlant.setImageIndex(selectedImageIndex);  // Set the image index of the Plant object here
-                            newPlant.setName(plantName);  // Set the name of the Plant object here
-                            Intent intent = new Intent();
-                            intent.putExtra("newPlant", newPlant);
-                            setResult(RESULT_OK, intent);
-                            Log.d(TAG,"IMage position is " + newPlant.getImageIndex() + selectedImageIndex);
-                            finish();
-                        }
+                    createPlantButton.setOnClickListener(view -> {
+                        String plantName = plantNameEditText.getText().toString();
+                        newPlant.setImageIndex(selectedImageIndex);  // Set the image index of the Plant object here
+                        newPlant.setName(plantName);  // Set the name of the Plant object here
+                        Intent intent = new Intent();
+                        intent.putExtra("newPlant", newPlant);
+                        setResult(RESULT_OK, intent);
+                        Log.d("TAG","IMage position is " + newPlant.getImageIndex() + selectedImageIndex);
+                        finish();
                     });
-                    back.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            backToDash();
-                        }
-                    });
+                    back.setOnClickListener(v -> backToDash());
 
                     // Add TextChangedListeners to all EditTexts
                     minTempEditText.addTextChangedListener(createTextWatcher());

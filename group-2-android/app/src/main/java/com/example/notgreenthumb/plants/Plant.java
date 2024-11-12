@@ -1,9 +1,13 @@
 package com.example.notgreenthumb.plants;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class Plant implements Serializable {
     // Identity variables
+    private UUID id;
     private int imageIndex = 1;
     private String plantName = "DEFAULT";
 
@@ -13,6 +17,7 @@ public class Plant implements Serializable {
     private int humidityValue = -1;
     private int temperatureValue = -1;
     private int moistureValue =-1;
+    private List<Long> wateringHistory = new ArrayList<>();
 
     // Min Max variables
 
@@ -27,12 +32,19 @@ public class Plant implements Serializable {
 
     public Plant(int imageIndex, String plantName) {
         this.imageIndex = imageIndex;
+        this.id = UUID.randomUUID();
         this.plantName = plantName;
     }
 
+    public UUID getId() {
+        return id;
+    }
     public Plant() {
     }
-
+    @Override
+    public int hashCode() {
+        return System.identityHashCode(this);
+    }
 
     public void setMinTemp(double minTemp) {
         this.minTemp = minTemp;
@@ -157,6 +169,21 @@ public class Plant implements Serializable {
 
     public void setMoistureValue(int moistureValue) {
         this.moistureValue = moistureValue;
+    }
+
+    public List<Long> getWateringHistory() {
+        return wateringHistory;
+    }
+    public void setWateringHistory(List<Long> wateringHistory){
+        this.wateringHistory = wateringHistory;
+    }
+
+    public void addToWateringHistory(long timestamp) {
+        wateringHistory.add(timestamp);
+    }
+
+    public void removeFromWateringHistory(long timestamp) {
+        wateringHistory.remove(timestamp);
     }
 }
 

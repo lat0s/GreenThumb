@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutProfile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/texture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <io.github.florent37.shapeofview.shapes.ArcView
+        android:id="@+id/arcview"
+        android:layout_width="0dp"
+        android:layout_height="73dp"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_arc_height="20dp"
+        app:shape_arc_position="bottom">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/arcview_bg">
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/back" />
+
+
+            <TextView
+                android:id="@+id/plantname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish"
+                android:text="Plant Name"
+                android:textAlignment="center"
+                android:textColor="#243513"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+        </FrameLayout>
+
+    </io.github.florent37.shapeofview.shapes.ArcView>
+
+
+    <!-- Container for checkboxes with margin -->
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chartView"
+        android:layout_width="394dp"
+        android:layout_height="797dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arcview"
+        app:layout_constraintVertical_bias="0.619">
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+    <LinearLayout
+        android:id="@+id/checkboxContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.9"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13">
+
+        <CheckBox
+            android:id="@+id/checkboxTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_temperature"
+            android:checked="true"
+            android:text="Temperature"
+            android:textColor="#333333" />
+
+        <CheckBox
+            android:id="@+id/checkboxLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_light"
+            android:checked="true"
+            android:text="Light"
+            android:textColor="#2B2B2B" />
+
+        <CheckBox
+            android:id="@+id/checkboxHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_humidity"
+            android:checked="true"
+            android:text="Humidity"
+            android:textColor="#000000" />
+
+        <CheckBox
+            android:id="@+id/checkboxSoilMoisture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_moisture"
+            android:checked="true"
+            android:text="Soil Moisture"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

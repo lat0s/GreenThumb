@@ -5,11 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
-
-
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,10 +17,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotGreenThumb"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SensorData"
+            android:name=".Graphs"
             android:exported="false" />
+        <activity
+            android:name=".Watering"
+            android:exported="false"
+            android:label="@string/title_activity_watering"
+            android:theme="@style/Theme.NotGreenThumb" />
+<!--        <activity-->
+<!--            android:name=".SensorData"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".PlantProfile"
             android:exported="false" />
