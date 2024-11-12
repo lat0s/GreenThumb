@@ -210,7 +210,7 @@ The following libraries were used in the development of the entire system. (Migh
 
 ## [Presentation Video](https://www.youtube.com/watch?v=ro6_CHGE1a4)
 
-## [Wiki](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/wikis/home)
+## [Wiki](https://github.com/lat0s/GreenThumb/wiki)
 
 <div align="center">
 <img src="assets\footer.svg">
