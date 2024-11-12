@@ -53,7 +53,7 @@ The Benefits are:
 
 ## Hardware and Software Architecture
 
-![System Design](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/raw/main/assets/systemdesign.png)
+![System Design](https://github.com/lat0s/GreenThumb/blob/main/assets/systemdesign.png)
 
 **Hardware Architecture:** <br>
 The project’s hardware architecture consists of the following components: 
@@ -68,7 +68,7 @@ Overall, the project's hardware architecture allows for effective data collectin
 
 **Software Architecture** <br>
 
-![System Design](https://git.chalmers.se/courses/dit113/2023/group-2/group-2/-/raw/main/assets/Android_App.png)
+![System Design](https://github.com/lat0s/GreenThumb/blob/main/assets/Android_App.png)
 
 The project’s software architecture consists of the following components: 
 
