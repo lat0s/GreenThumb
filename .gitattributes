@@ -11,6 +11,8 @@ greenThumbNodeJS/**/*.json linguist-language=JSON
 
 
 group-2-android/**/*.xml linguist-language=XML
+group-2-android/**/*.java linguist-language=Java
+
 arduino/libraries/**/*.ino linguist-language=C++
 arduino/libraries/**/*.h linguist-language=C++
 arduino/libraries/**/*.cpp linguist-language=C++
