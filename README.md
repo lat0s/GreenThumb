@@ -212,6 +212,7 @@ The following libraries were used in the development of the entire system. (Migh
 
 ## [Wiki](https://github.com/lat0s/GreenThumb/wiki)
 
+<!-- Footer -->
 <div align="center">
 <img src="assets\footer.svg">
 </div>
