@@ -132,7 +132,7 @@ Mohammad made nessecary changes to the wiki page.He edited the Home page , made 
 * Search for and install the required libraries for your sensors and any additional functionality you need.
 * Close the library manager once the installation is complete.
 
-**GitHubRepository:**
+**GitHub Repository:**
 * Clone repository from GitHub.
 
 **NodeJS**
