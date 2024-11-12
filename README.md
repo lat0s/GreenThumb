@@ -47,7 +47,7 @@ The Benefits are:
 • The app provides the user with real time sensor data including the – current Temperature, Humidity, Soil Moisture, Light conditions.
 
 • Users can create personalised Plant profiles, with names, icons, and customised ranges for normal conditions.
-.
+
 • Customised notifications, allowed by the customised ranges for a plant’s normal conditions. Notifications are only sent when sensor readings go beyond their specified range.
 
 • Access to a plant database. Found through the settings page, which leads users to a pdf file created by the developers with the aim of providing users with recommended care conditions for various plants. Providing support for users needing additional information about their plant to customise its care conditions.
