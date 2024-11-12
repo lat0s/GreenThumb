@@ -2,13 +2,13 @@
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Prerequisites](#prerequisits)
-4. [Purpose and Benefits of the App](#Purpose and Benefits of the app)
-5. [Hardware and Software Architecture](#Hardware and Software Architecture)
-6. [Team Contributions](#The main contributions of each Member)
+4. [Purpose and Benefits of the App](#PurposeandBenefitsoftheapp)
+5. [Hardware and Software Architecture](#HardwareandSoftwareArchitecture)
+6. [Team Contributions](#ThemaincontributionsofeachMember)
 7. [Installation Guide](#installation)
 8. [Usage](#Usage)
-9. [Team Information](#Team Information)
-10. [Libraries User](#Libraries Used)
+9. [Team Information](#TeamInformation)
+10. [Libraries User](#LibrariesUsed)
 11. [Wiki](#wiki)
 
 ## Introduction
@@ -169,24 +169,23 @@ Mohammad made nessecary changes to the wiki page.He edited the Home page , made 
 - Simone Graziosi | [graziosi](https://git.chalmers.se/graziosi)
 
 ## Libraries Used
-The following libraries were used in the development of the entire system.
-* implementation 'androidx.recyclerview:recyclerview:1.3.0'
-* implementation 'com.google.code.gson:gson:2.8.9'
+The following libraries were used in the development of the entire system. (Might be outdated)
+*  'androidx.recyclerview:recyclerview:1.3.0'
+*  'com.google.code.gson:gson:2.8.9'
+*  'io.github.florent37:shapeofview:1.4.7'
+*  "androidx.viewpager2:viewpager2:1.0.0"
+*  'com.google.android.material:material:1.8.0'
+*  'androidx.appcompat:appcompat:1.4.1'
+*  'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+*  'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+*  'androidx.multidex:multidex:2.0.1'
+*  'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+*  'androidx.constraintlayout:constraintlayout:2.1.4'
+*  'junit:junit:4.13.2'
+*  'androidx.test.ext:junit:1.1.5'
+*  'androidx.test.espresso:espresso-core:3.5.1'
 
-* implementation 'io.github.florent37:shapeofview:1.4.7'
-* implementation "androidx.viewpager2:viewpager2:1.0.0"
 
-* implementation 'com.google.android.material:material:1.8.0'
-
-* implementation 'androidx.appcompat:appcompat:1.4.1'
-* implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
-* implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-* implementation 'androidx.multidex:multidex:2.0.1'
-* implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
-* implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-* testImplementation 'junit:junit:4.13.2'
-* androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-* androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 ### Project status - Completed
 
