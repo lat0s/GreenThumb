@@ -132,8 +132,8 @@ Mohammad made nessecary changes to the wiki page.He edited the Home page , made 
 * Search for and install the required libraries for your sensors and any additional functionality you need.
 * Close the library manager once the installation is complete.
 
-**GitLab Repository:**
-* Create a GitLab account (https://gitlab.com) if you don't have one already.
+**GitHubRepository:**
+* Clone repository from GitHub.
 
 **NodeJS**
 * Open the server.js file.
